@@ -18,6 +18,20 @@ public class ShockBall : MonoBehaviour
         color_uncontrolled = renderer.color;
     }
 
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.collider.CompareTag("Wall"))
+        {
+            // audio
+            SoundManager.PlayShockBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+        }
+        else if (col.collider.CompareTag("Ball"))
+        {
+            // audio
+            SoundManager.PlayShockBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+        }
+    }
+
     public void TakeControlOfBall(Racquet racquet)
     {
         // set controlling player
@@ -26,6 +40,9 @@ public class ShockBall : MonoBehaviour
 
         charges = max_charges;
         charge_text.text = charges.ToString();
+
+        // audio
+        SoundManager.PlayShockballPossess(transform.position);
     }
     public void UseCharge()
     {

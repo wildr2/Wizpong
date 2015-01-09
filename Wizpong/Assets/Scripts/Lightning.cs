@@ -37,22 +37,6 @@ public class Lightning : MonoBehaviour
     }
     public void Fire(Transform bolt_start, Transform bolt_end)
     {
-        //Vector2 direction = (end_pos - start_pos).normalized;
-
-        // find the distance of the rail (collision with environment)
-        //float shortest_dist = 32;
-        //RaycastHit2D[] hits = Physics2D.LinecastAll(start_pos, start_pos + direction * shortest_dist);
-
-        //foreach (RaycastHit2D hit in hits)
-        //{
-        //    if (hit.collider.tag == "Wall")
-        //    {
-        //        float dist = (hit.point - start_pos).magnitude;
-        //        shortest_dist = Mathf.Min(shortest_dist, dist);
-        //    }
-        //}
-
-
         this.bolt_start = bolt_start;
         this.bolt_end = bolt_end;
 
@@ -61,6 +45,9 @@ public class Lightning : MonoBehaviour
         line.enabled = true;
         redraw_count = 0;
         
+        // audio
+        SoundManager.PlayShock();
+
         // draw and collision (stun players)
         StartCoroutine(ReCreateBolt());
     }

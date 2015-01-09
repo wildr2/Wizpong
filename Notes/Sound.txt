@@ -4,7 +4,6 @@ game ball roll loop
 stun ball roll loop
 shock ball roll loop
 
-stun ball on stun
 stun ball lose possesion (not stun)
 shock ball gain possesion
 shock ball lose possesion
@@ -27,6 +26,7 @@ game ball vs wall / ball
 stun ball vs wall / ball
 shock ball vs wall / ball
 
+stun ball on stun
 lightning hit
 
 wall become live

@@ -154,6 +154,7 @@ public class MatchManager : MonoBehaviour
     }
     private void OnRewall()
     {
+        SoundManager.PlayRewall();
         ui.SetScoreTextRewall();
         OnPoint();
     }
@@ -173,7 +174,9 @@ public class MatchManager : MonoBehaviour
         cam_shake.Shake(new CamShakeInstance(0.8f, 1f));
         TimeScaleManager.AddMultiplier("match_event", 0.75f);
         gameball.SetTrailEnabled(false);
-     
+
+        // audio
+        SoundManager.PlayPoint();
 
         // Score
         if (possession == 1)
@@ -213,6 +216,9 @@ public class MatchManager : MonoBehaviour
             court_fx.EnableConfetti(racquet2.player_color);
             court_fx.FlashCourtColor(racquet2.player_color);
         }
+
+        // audio
+        SoundManager.PlayGameOver();
     }
 
     private IEnumerator BeginNextPoint()
@@ -220,6 +226,9 @@ public class MatchManager : MonoBehaviour
         yield return new WaitForSeconds(seconds_between_points);
 
         point_over = false;
+
+        // audio
+        SoundManager.PlayBeginPoint();
 
         // reset time scale
         TimeScaleManager.RemoveMultiplier("match_event");

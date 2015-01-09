@@ -81,7 +81,11 @@ public class GameBall : MonoBehaviour
 
             hit_wall_since_racquet = true;
         }
-
+        else if (col.collider.CompareTag("Ball"))
+        {
+            // audio
+            SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
+        }
        
     }
     public void RacquetTouch()

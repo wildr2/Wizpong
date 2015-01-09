@@ -25,9 +25,22 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // Audio sources
+
+    // Audio source groups
     public AudioSource prefab_stunball_stun;
     private static AudioSourceGroup asg_stunball_stun;
+
+    public AudioSource prefab_shock;
+    private static AudioSourceGroup asg_shock;
+
+    public AudioSource prefab_stun;
+    private static AudioSourceGroup asg_stun;
+
+    public AudioSource prefab_stunball_possess;
+    private static AudioSourceGroup asg_stunball_possess;
+
+    public AudioSource prefab_shockball_possess;
+    private static AudioSourceGroup asg_shockball_possess;
 
     public AudioSource prefab_gameball_bump;
     private static AudioSourceGroup asg_gameball_bump;
@@ -35,8 +48,19 @@ public class SoundManager : MonoBehaviour
     public AudioSource prefab_stunball_bump;
     private static AudioSourceGroup asg_stunball_bump;
 
+    public AudioSource prefab_shockball_bump;
+    private static AudioSourceGroup asg_shockball_bump;
 
-    // audio sources that are currently playing
+    
+    // Simple audio sources
+    public AudioSource source_rewall;
+    public AudioSource source_begin_point;
+    public AudioSource source_point;
+    public AudioSource source_game_over;
+
+
+
+    // Audio sources that are currently playing
     private static List<ActiveAudioSource> active_sources = new List<ActiveAudioSource>();
 
 
@@ -72,8 +96,16 @@ public class SoundManager : MonoBehaviour
             }
 
 
-            // update pitch based on time scale
-            s.source.pitch = Mathf.Max(0, (1f + s.pitch_offset) * Time.timeScale);
+            // set pitch
+            if (!s.timescale_independant)
+            {
+                // update pitch based on time scale
+                s.source.pitch = Mathf.Max(0, (1f + s.pitch_offset) * Time.timeScale);
+            }
+            else
+            {
+                s.source.pitch = Mathf.Max(0, (1f + s.pitch_offset));
+            }
         }
 
         // remove no longer playing sources from active_sources
@@ -87,39 +119,97 @@ public class SoundManager : MonoBehaviour
     public static void PlayStunBallStun(Vector2 position)
     {
         ActiveAudioSource s = asg_stunball_stun.GetAvailableSource();
-        if (s != null)
-        {
-            s.source.transform.position = position;
-            s.Play();
 
-            active_sources.Add(s);
-        }
+        s.source.transform.position = position;
+        s.Play();
+
+        active_sources.Add(s);
     }
+    public static void PlayShock()
+    {
+        ActiveAudioSource s = asg_shock.GetAvailableSource();
+
+        s.Play();
+        s.pitch_offset = 0.4f;
+        active_sources.Add(s);
+    }
+    public static void PlayStun()
+    {
+        ActiveAudioSource s = asg_stun.GetAvailableSource();
+
+        s.Play();
+        active_sources.Add(s);
+    }
+
+    public static void PlayStunballPossess(Vector2 position)
+    {
+        ActiveAudioSource s = asg_stunball_possess.GetAvailableSource();
+
+        s.source.transform.position = position;
+        s.Play();
+
+        active_sources.Add(s);
+    }
+    public static void PlayShockballPossess(Vector2 position)
+    {
+        ActiveAudioSource s = asg_shockball_possess.GetAvailableSource();
+
+        s.source.transform.position = position;
+        //s.pitch_offset = 1;
+        s.Play();
+
+        active_sources.Add(s);
+    }
+
     public static void PlayGameBallBump(Vector2 position, float force)
     {
         ActiveAudioSource s = asg_gameball_bump.GetAvailableSource();
-        if (s != null)
-        {
-            s.source.transform.position = position;
-            s.source.volume = force;
-            s.pitch_offset = Random.Range(-0.05f, 0.05f);
-            s.Play();
 
-            active_sources.Add(s);
-        }
+        s.source.transform.position = position;
+        s.source.volume = force;
+        s.pitch_offset = Random.Range(-0.05f, 0.05f);
+        s.Play();
+
+        active_sources.Add(s);
     }
     public static void PlayStunBallBump(Vector2 position, float force)
     {
         ActiveAudioSource s = asg_stunball_bump.GetAvailableSource();
-        if (s != null)
-        {
-            s.source.transform.position = position;
-            s.source.volume = force;
-            s.pitch_offset = Random.Range(-0.05f, 0.05f);
-            s.Play();
 
-            active_sources.Add(s);
-        }
+        s.source.transform.position = position;
+        s.source.volume = force;
+        s.pitch_offset = Random.Range(-0.05f, 0.05f);
+        s.Play();
+
+        active_sources.Add(s);
+    }
+    public static void PlayShockBallBump(Vector2 position, float force)
+    {
+        ActiveAudioSource s = asg_shockball_bump.GetAvailableSource();
+
+        s.source.transform.position = position;
+        s.source.volume = force;
+        s.pitch_offset = Random.Range(-0.05f, 0.05f);
+        s.Play();
+
+        active_sources.Add(s);
+    }
+
+    public static void PlayRewall()
+    {
+        Instance.source_rewall.Play();
+    }
+    public static void PlayBeginPoint()
+    {
+        Instance.source_begin_point.Play();
+    }
+    public static void PlayPoint()
+    {
+        Instance.source_point.Play();
+    }
+    public static void PlayGameOver()
+    {
+        Instance.source_game_over.Play();
     }
 
 
@@ -128,8 +218,17 @@ public class SoundManager : MonoBehaviour
     private static void Initialize()
     {
         asg_stunball_stun = new AudioSourceGroup(Instance.prefab_stunball_stun, 2);
+        asg_shock = new AudioSourceGroup(Instance.prefab_shock, 6);
+        asg_stun = new AudioSourceGroup(Instance.prefab_stun, 2);
+
+        asg_stunball_possess = new AudioSourceGroup(Instance.prefab_stunball_possess, 2);
+        asg_shockball_possess = new AudioSourceGroup(Instance.prefab_shockball_possess, 2);
+
         asg_gameball_bump = new AudioSourceGroup(Instance.prefab_gameball_bump, 4);
         asg_stunball_bump = new AudioSourceGroup(Instance.prefab_stunball_bump, 6);
+        asg_shockball_bump = new AudioSourceGroup(Instance.prefab_shockball_bump, 6);
+
+        
     }
 }
 
@@ -152,7 +251,7 @@ public class AudioSourceGroup
     
     /// <summary>
     /// Return an ActiveAudioSource containing an available audio source from this group.
-    /// If all sources are currently playing, return null.
+    /// If all sources are currently playing, the least recently starting audio source is stopped and returned.
     /// </summary>
     /// <returns></returns>
     public ActiveAudioSource GetAvailableSource()
@@ -163,13 +262,15 @@ public class AudioSourceGroup
                 return new ActiveAudioSource(sources[i]);
         }
 
-        return null;
+        sources[0].Stop();
+        return new ActiveAudioSource(sources[0]);
     }
 }
 public class ActiveAudioSource
 {
     public AudioSource source;
     public float pitch_offset;
+    public bool timescale_independant = false;
 
     public ActiveAudioSource(AudioSource source)
     {

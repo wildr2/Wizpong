@@ -152,6 +152,9 @@ public class Racquet : MonoBehaviour
 
             StartCoroutine("UpdateStun");
         }
+
+        // audio
+        SoundManager.PlayStun();
     }
     public void Stun()
     {

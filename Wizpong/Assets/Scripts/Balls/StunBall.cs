@@ -49,6 +49,11 @@ public class StunBall : MonoBehaviour
             // audio
             SoundManager.PlayStunBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
         }
+        else if (col.collider.CompareTag("Ball"))
+        {
+            // audio
+            SoundManager.PlayStunBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+        }
     }
     public void TryTakeControlOfBall(Racquet racquet, Collider2D physical_collider)
     {
@@ -64,6 +69,9 @@ public class StunBall : MonoBehaviour
             Physics2D.IgnoreLayerCollision(gameObject.layer, layer_racquet_czone, true);
 
             StartCoroutine("ResetControllingPlayer");
+
+            // audio
+            SoundManager.PlayStunballPossess(transform.position);
         } 
     }
 
