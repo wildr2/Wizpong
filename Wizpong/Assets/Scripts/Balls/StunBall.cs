@@ -3,6 +3,8 @@ using System.Collections;
 
 public class StunBall : MonoBehaviour 
 {
+    private CameraShake cam_shake;
+
     private int controlling_player = 0; // 0 is noone, 1 is player 1...
     private const float duration_controlled = 2;
     private const float stun_duration = 2;
@@ -14,12 +16,17 @@ public class StunBall : MonoBehaviour
     public string layer_name_racquet_czone;
     private int layer_racquet_czone;
 
+    public AudioSource audio_on_stun;
+    
 
 
     public void Start()
     {
         color_uncontrolled = renderer.color;
         layer_racquet_czone = LayerMask.NameToLayer(layer_name_racquet_czone);
+
+        cam_shake = Camera.main.GetComponent<CameraShake>();
+        if (!cam_shake) Debug.LogError("main camera has no CameraShake component");
     }
 
     public void OnCollisionEnter2D(Collision2D col)
@@ -32,7 +39,7 @@ public class StunBall : MonoBehaviour
                 Racquet r = col.collider.GetComponent<Racquet>();
                 if (r != null && r.player_number != controlling_player && controlling_player != 0)
                 {
-                    r.Stun(stun_duration);
+                    HitRacquet(r);
                 }
             }
         }
@@ -55,6 +62,12 @@ public class StunBall : MonoBehaviour
     }
 
 
+    private void HitRacquet(Racquet r)
+    {
+        r.Stun(stun_duration);
+        SoundManager.PlayStunBallStun(r.transform.position);
+        cam_shake.Shake(new CamShakeInstance(0.4f, 0.5f));
+    }
     private IEnumerator ResetControllingPlayer()
     {
         yield return new WaitForSeconds(duration_controlled);
