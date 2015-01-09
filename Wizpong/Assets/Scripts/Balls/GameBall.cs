@@ -72,6 +72,9 @@ public class GameBall : MonoBehaviour
             Wall wall = col.collider.GetComponent<Wall>();
             last_wall = wall;
 
+            // audio
+            SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
+
             // fire event
             if (event_collide_wall != null) event_collide_wall(this, new EventArgs<Wall>(wall));
 

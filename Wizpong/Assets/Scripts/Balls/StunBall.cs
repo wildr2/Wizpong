@@ -43,6 +43,12 @@ public class StunBall : MonoBehaviour
                 }
             }
         }
+        
+        else if (col.collider.CompareTag("Wall"))
+        {
+            // audio
+            SoundManager.PlayStunBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+        }
     }
     public void TryTakeControlOfBall(Racquet racquet, Collider2D physical_collider)
     {

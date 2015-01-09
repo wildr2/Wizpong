@@ -29,7 +29,7 @@ public class GameSettings : MonoBehaviour
 
 
     // player info
-    public static bool[] ai_controlled = { false, true };
+    public static bool[] ai_controlled = { false, false };
     public static string[] player_name = { "Player 1", "Player 2" };
     public static int[] player_color_ID = { 0, 0 };
     public static int[] player_racquet_ID = { 0, 0 };

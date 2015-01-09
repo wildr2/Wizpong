@@ -15,6 +15,7 @@ public class Racquet : MonoBehaviour
     // Other
     private CameraShake cam_shake;
     public UI ui;
+    public ControlZoneAudio czone_audio;
 
     // Position and court bounds
     private const int bounds_width = 31, bounds_height = 17;
@@ -132,7 +133,7 @@ public class Racquet : MonoBehaviour
     }
     public void ShrinkControlZone()
     {
-        SetCZoneSizeToMin();
+        SetCZoneSizeToMin();   
     }
     public void Stun(float duration)
     {
@@ -206,21 +207,21 @@ public class Racquet : MonoBehaviour
             rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, max_speed);
         }
 
-        // restrict movement to court
 
+        // restrict movement to court
         if (Mathf.Abs(transform.position.x) > bounds_width / 2f)
         {
-            float x = transform.position.x / bounds_width / 2f;
-            rigidbody2D.AddForce(new Vector2(-x * Time.deltaTime * 60000f, 0));
-            //rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
-            //transform.position = new Vector2(Mathf.Sign(transform.position.x) * bounds_width, transform.position.y);
+            //float x = transform.position.x / bounds_width / 2f;
+            //rigidbody2D.AddForce(new Vector2(-x * Time.deltaTime * 60000f, 0));
+            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
+            transform.position = new Vector2(Mathf.Sign(transform.position.x) * bounds_width / 2f, transform.position.y);
         }
         if (Mathf.Abs(transform.position.y) > bounds_height / 2f)
         {
-            float y = transform.position.y / bounds_height / 2f;
-            rigidbody2D.AddForce(new Vector2(0, -y * Time.deltaTime * 60000f));
-            //rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0);
-            //transform.position = new Vector2(transform.position.x, Mathf.Sign(transform.position.y) * bounds_height);
+            //float y = transform.position.y / bounds_height / 2f;
+            //rigidbody2D.AddForce(new Vector2(0, -y * Time.deltaTime * 60000f));
+            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0);
+            transform.position = new Vector2(transform.position.x, Mathf.Sign(transform.position.y) * bounds_height / 2f);
         }
     }
     private IEnumerator UpdateStun()
@@ -335,7 +336,8 @@ public class Racquet : MonoBehaviour
     {
         czone_radius = max_czone_radius;
         control_zone.localScale = new Vector3(czone_radius, czone_radius, 1);
-        
+        czone_audio.StartEffect();
+
         // only enable the collider at the end of the frame so as not to disrupt other collisions
         yield return new WaitForEndOfFrame();
         control_zone.gameObject.SetActive(true);
@@ -345,11 +347,13 @@ public class Racquet : MonoBehaviour
         czone_radius = 0;
         control_zone.localScale = new Vector3(czone_radius, czone_radius, 1);
         control_zone.gameObject.SetActive(true);
+        czone_audio.StopEffect();
     }
     private void DisableCZone()
     {
         czone_radius = 0;
         control_zone.gameObject.SetActive(false);
+        czone_audio.StopEffect();
 
         controlled_ball = null;
     }
