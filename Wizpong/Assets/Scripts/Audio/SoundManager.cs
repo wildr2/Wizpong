@@ -57,6 +57,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource source_begin_point;
     public AudioSource source_point;
     public AudioSource source_game_over;
+    public AudioSource source_live_wall;
+    public AudioSource source_possesion_change;
 
 
 
@@ -210,6 +212,14 @@ public class SoundManager : MonoBehaviour
     public static void PlayGameOver()
     {
         Instance.source_game_over.Play();
+    }
+    public static void PlayPosessionChange()
+    {
+        Instance.source_possesion_change.Play();
+    }
+    public static void PlayLiveWall()
+    {
+        Instance.source_live_wall.Play();
     }
 
 

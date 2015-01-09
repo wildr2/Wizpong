@@ -13,7 +13,7 @@ public class MatchManager : MonoBehaviour
     private CameraShake cam_shake;
     
     // Current point information
-    private int possession = 0; // 0 is nobody, 1 is player 1...
+    private int last_possession = 0, possession = 0; // 0 is nobody, 1 is player 1...
     private Wall live_wall = null;
     private int live_wall_possession = 0; // possession when live_wall wall was made live
     private int last_wall_possession = 0;
@@ -84,6 +84,7 @@ public class MatchManager : MonoBehaviour
             {
                 possession = r.player_number;
                 OnPosessionChange();
+                last_possession = possession;
             }
             
             gameball.SetTrailColor(r.player_color);
@@ -151,6 +152,10 @@ public class MatchManager : MonoBehaviour
             racquet2.SetAttackingPlayer(true);
             racquet1.SetAttackingPlayer(false);
         }
+
+        // audio
+        if (last_possession != 0)
+            SoundManager.PlayPosessionChange();
     }
     private void OnRewall()
     {
@@ -164,6 +169,9 @@ public class MatchManager : MonoBehaviour
 
         live_wall = wall;
         live_wall.SetColorLive(PossessorPlayerColor());
+
+        // audio
+        SoundManager.PlayLiveWall();
     }
     private void OnPoint()
     {
