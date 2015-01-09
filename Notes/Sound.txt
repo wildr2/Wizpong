@@ -1,0 +1,45 @@
+_______On Ball_______
+
+game ball roll loop
+stun ball roll loop
+shock ball roll loop
+
+stun ball on stun
+stun ball lose possesion (not stun)
+shock ball gain possesion
+shock ball lose possesion
+game ball gain possession
+
+regular point
+
+
+_______On Racquet_______
+
+racquet stun
+racquet stun release
+racquet release ball (c zone minimize)
+lightning fire
+
+
+_______Child of SoundManager (moved by SoundManager)_______
+
+game ball vs wall / ball
+stun ball vs wall / ball
+shock ball vs wall / ball
+
+lightning hit
+
+wall become live
+rewall point
+
+
+_______2D_______
+
+gg
+next point begin
+
+
+
+
+
+
