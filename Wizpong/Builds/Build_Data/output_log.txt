@@ -1,0 +1,31 @@
+Initialize engine version: 4.6.0f1 (8b19a19f0c27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.3302]
+    Renderer: NVIDIA NVS 5200M
+    Vendor:   NVIDIA
+    VRAM:     971 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.067 seconds
+desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 0.453351 ms
+System memory in use before: 40.0 MB.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 39.9 MB.
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 644.
+Total: 0.839815 ms (FindLiveObjects: 0.037867 ms CreateObjectMapping: 0.013448 ms MarkObjects: 0.167042 ms  DeleteObjects: 0.044591 ms)
+

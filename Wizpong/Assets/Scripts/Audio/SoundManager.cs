@@ -56,9 +56,11 @@ public class SoundManager : MonoBehaviour
     public AudioSource source_rewall;
     public AudioSource source_begin_point;
     public AudioSource source_point;
+    public AudioSource source_bells;
     public AudioSource source_game_over;
     public AudioSource source_live_wall;
     public AudioSource source_possesion_change;
+    public AudioSource source_alert_loop;
 
 
 
@@ -115,6 +117,11 @@ public class SoundManager : MonoBehaviour
         {
             active_sources.Remove(source);
         }
+
+
+
+        // other audio
+        source_alert_loop.pitch = Time.timeScale;
     }
 
     // make sound functions
@@ -208,6 +215,7 @@ public class SoundManager : MonoBehaviour
     public static void PlayPoint()
     {
         Instance.source_point.Play();
+        Instance.source_bells.Play();
     }
     public static void PlayGameOver()
     {
@@ -220,6 +228,15 @@ public class SoundManager : MonoBehaviour
     public static void PlayLiveWall()
     {
         Instance.source_live_wall.Play();
+    }
+
+    public static void PlayAlertLoop()
+    {
+        Instance.source_alert_loop.Play();
+    }
+    public static void StopAlertLoop()
+    {
+        Instance.source_alert_loop.Stop();
     }
 
 

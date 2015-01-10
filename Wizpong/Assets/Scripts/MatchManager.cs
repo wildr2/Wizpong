@@ -20,7 +20,8 @@ public class MatchManager : MonoBehaviour
 
     // Scoring and time
     private int score_p1 = 0, score_p2 = 0;
-    private float match_seconds_left, match_seconds_left_initial = 5 * 60;
+    private float match_seconds_left, match_length_seconds = 5f * 60;
+    private bool time_alert_playing = false;
 
     // Other
     private float seconds_between_points = 3;
@@ -39,7 +40,7 @@ public class MatchManager : MonoBehaviour
         gameball.event_on_death += new System.EventHandler<EventArgs>(OnGameBallDeath);      
   
         // match clock
-        match_seconds_left = match_seconds_left_initial;
+        match_seconds_left = match_length_seconds;
 
         // cam shake reference
         cam_shake = Camera.main.GetComponent<CameraShake>();
@@ -50,12 +51,25 @@ public class MatchManager : MonoBehaviour
         if (!point_over)
         {
             // possession clock
-            ui.UpdatePossessionClock(gameball.GetLifeTimeRemaining());
+            float possession_seconds_left = gameball.GetLifeTimeRemaining();
+            ui.UpdatePossessionClock(possession_seconds_left);
+
+            if (!time_alert_playing && possession_seconds_left < 3)
+            {
+                SoundManager.PlayAlertLoop();
+                time_alert_playing = true;
+            }
+            else if (time_alert_playing && possession_seconds_left >= 3)
+            {
+                SoundManager.StopAlertLoop();
+                time_alert_playing = false;
+            }
         }
 
-        // match clock
+        
         if (!game_over)
         {
+            // match clock
             match_seconds_left -= Time.unscaledDeltaTime;
             if (match_seconds_left <= 0)
             {
@@ -185,6 +199,8 @@ public class MatchManager : MonoBehaviour
 
         // audio
         SoundManager.PlayPoint();
+        SoundManager.StopAlertLoop();
+        time_alert_playing = false;
 
         // Score
         if (possession == 1)
@@ -227,6 +243,8 @@ public class MatchManager : MonoBehaviour
 
         // audio
         SoundManager.PlayGameOver();
+        SoundManager.StopAlertLoop();
+        time_alert_playing = false;
     }
 
     private IEnumerator BeginNextPoint()
@@ -234,6 +252,10 @@ public class MatchManager : MonoBehaviour
         yield return new WaitForSeconds(seconds_between_points);
 
         point_over = false;
+
+        // reset possession
+        possession = 0;
+        last_possession = 0;
 
         // audio
         SoundManager.PlayBeginPoint();
