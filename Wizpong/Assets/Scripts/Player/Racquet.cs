@@ -132,9 +132,22 @@ public class Racquet : MonoBehaviour
             max_speed = max_speed_defending;
         }
     }
-    public void ShrinkControlZone()
+    public void ResetControlZone()
     {
-        SetCZoneSizeToMin();   
+        czone_radius = 0;
+        control_zone.localScale = new Vector3(czone_radius, czone_radius, 1);
+        control_zone.gameObject.SetActive(true);
+        czone_audio.StopEffect();
+
+        controlled_ball = null;
+    }
+    public void DisableControlZone()
+    {
+        czone_radius = 0;
+        control_zone.gameObject.SetActive(false);
+        czone_audio.StopEffect();
+
+        controlled_ball = null;
     }
     public void Stun(float duration)
     {
@@ -196,7 +209,7 @@ public class Racquet : MonoBehaviour
     {
         SetFinesseHeat(0);
         controlled_ball = null;
-        ResetCZone();
+        ResetControlZone();
 
         max_speed = max_speed_attacking;
     }
@@ -354,29 +367,6 @@ public class Racquet : MonoBehaviour
         yield return new WaitForEndOfFrame();
         control_zone.gameObject.SetActive(true);
     }
-    private void SetCZoneSizeToMin()
-    {
-        czone_radius = 0;
-        control_zone.localScale = new Vector3(czone_radius, czone_radius, 1);
-        control_zone.gameObject.SetActive(true);
-        czone_audio.StopEffect();
-    }
-    private void DisableCZone()
-    {
-        czone_radius = 0;
-        control_zone.gameObject.SetActive(false);
-        czone_audio.StopEffect();
-
-        controlled_ball = null;
-    }
-    private void ResetCZone()
-    {
-        czone_radius = normal_czone_radius;
-        control_zone.localScale = new Vector3(czone_radius, czone_radius, 1);
-        control_zone.gameObject.SetActive(true);
-
-        controlled_ball = null;
-    }
 
     private void OnBallEnterCZone()
     {
@@ -385,7 +375,7 @@ public class Racquet : MonoBehaviour
     private void OnBallExitCZone()
     {
         controlled_ball = null;
-        SetCZoneSizeToMin();
+        ResetControlZone();
     }
 
 

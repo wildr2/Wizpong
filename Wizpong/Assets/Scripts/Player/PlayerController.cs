@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
         racquet.SetInputUseFinesse(Input.GetButton("Finesse" + pn));
 
         // control zone disabling
-        if (Input.GetButtonDown("Disable" + pn)) racquet.ShrinkControlZone();
+        if (Input.GetButton("Disable" + pn)) racquet.DisableControlZone();
+        else if (Input.GetButtonUp("Disable" + pn)) racquet.ResetControlZone();
 
         // lightning
         if (Input.GetButtonDown("Fire" + pn)) racquet.FireLightning();

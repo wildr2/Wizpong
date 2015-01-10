@@ -163,9 +163,9 @@ public class MatchManager : MonoBehaviour
 
         // shrink racquet
         if (possession == 1)
-            racquet1.ShrinkControlZone();
+            racquet1.ResetControlZone();
         else if (possession == 2)
-            racquet2.ShrinkControlZone();
+            racquet2.ResetControlZone();
 
 
         // gameball lifetime reset
@@ -291,7 +291,6 @@ public class MatchManager : MonoBehaviour
         // return the live wall to normal
         if (live_wall != null)
         {
-            Debug.Log("reset live wall");
             live_wall.FadeColortoNeutral();
             live_wall = null;
         }
