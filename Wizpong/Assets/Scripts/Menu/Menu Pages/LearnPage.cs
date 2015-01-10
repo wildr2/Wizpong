@@ -21,17 +21,17 @@ public class LearnPage : MenuPage
         MenuHelper.GUILayoutHeader("Learn", t);
 
         // buttons
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Basic Tutorials", GUILayout.Width(250 * t)))
+        if (GUILayout.Button("Play Tutorial Match", GUILayout.Width(320 * t)))
         {
         }
-        if (GUILayout.Button("Advanced Tutorials", GUILayout.Width(320 * t)))
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Keybindings", GUILayout.Width(320 * t)))
+        {
+        }
+        if (GUILayout.Button("Advanced Tips", GUILayout.Width(320 * t)))
         {
         }
         GUILayout.EndHorizontal();
-        if (GUILayout.Button("Racquets", GUILayout.Width(180 * t)))
-        {
-        }
 
         GUILayout.EndVertical();
         GUILayout.EndArea();

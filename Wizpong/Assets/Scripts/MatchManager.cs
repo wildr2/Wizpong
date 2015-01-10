@@ -309,13 +309,14 @@ public class MatchManager : MonoBehaviour
         game_over = false;
 
         // match clock
+        match_length_seconds = (GameSettings.match_type == 0 ? 5 : 10) * 60;
         match_seconds_left = match_length_seconds;
 
         // inter point clock
         seconds_to_next_point = seconds_to_first_point;
 
         // gameball
-        gameball.gameObject.SetActive(false);
+        gameball.Hide();
 
         StartCoroutine("BeginNextPoint");
     }
@@ -336,7 +337,6 @@ public class MatchManager : MonoBehaviour
         TimeScaleManager.RemoveMultiplier("match_event");
 
         // prepare gameball
-        gameball.gameObject.SetActive(true);
         gameball.Reset();
 
         // prepare racquets

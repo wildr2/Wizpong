@@ -26,7 +26,6 @@ public class MainMenuPage : MenuPage
         MenuHelper.GUILayoutHeader("", t);
         
         // buttons
-        GUILayout.BeginHorizontal();
         NextVerticalKeyboardControl("Learn");
         if (GUILayout.Button("Learn", GUILayout.Width(120*t)) || KBControlPressed("Learn"))
         {
@@ -34,14 +33,6 @@ public class MainMenuPage : MenuPage
             learn_page.TransitionIn(null);
         }
         if (LastControlHover("Learn")) { SetKeyBoardFocus("Learn"); }
-        NextVerticalKeyboardControl("Practice");
-        if (GUILayout.Button("Practice", GUILayout.Width(150*t)) || KBControlPressed("Practice"))
-        {
-            yes_no_pu.question_text = "Are you sure you want to practice?";
-            yes_no_pu.TransitionIn(null);
-        }
-        if (LastControlHover("Practice")) { SetKeyBoardFocus("Practice"); }
-        GUILayout.EndHorizontal();
         NextVerticalKeyboardControl("Settings");
         if (GUILayout.Button("Settings", GUILayout.Width(150*t)) || KBControlPressed("Settings"))
         {

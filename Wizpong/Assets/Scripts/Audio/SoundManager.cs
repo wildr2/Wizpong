@@ -25,6 +25,8 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    // Music
+    public AudioSource music;
 
     // Audio source groups
     public AudioSource prefab_stunball_stun;
@@ -244,6 +246,10 @@ public class SoundManager : MonoBehaviour
 
     private static void Initialize()
     {
+        // music
+        Instance.music.enabled = GameSettings.music_on;
+
+        // other audio
         asg_stunball_stun = new AudioSourceGroup(Instance.prefab_stunball_stun, 2);
         asg_shock = new AudioSourceGroup(Instance.prefab_shock, 6);
         asg_stun = new AudioSourceGroup(Instance.prefab_stun, 2);

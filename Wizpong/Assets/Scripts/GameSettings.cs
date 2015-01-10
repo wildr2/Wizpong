@@ -32,12 +32,11 @@ public class GameSettings : MonoBehaviour
     public static bool[] ai_controlled = { false, false };
     public static string[] player_name = { "Player 1", "Player 2" };
     public static int[] player_color_ID = { 0, 0 };
-    public static int[] player_racquet_ID = { 0, 0 };
 
 	// match info
     public static int court;
     public static int match_type;
-    public static int points_for_match = 5;
+    public static bool music_on = true;
 
     // constant data  (perhaps load from file in future)
     public static Color[] player_colors; // set in initialize

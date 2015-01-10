@@ -22,14 +22,16 @@ public class GameSetupPage : MenuPage
         MenuHelper.GUILayoutHeader("Game Setup", t);
 
         // buttons
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Short Match", GUILayout.Width(300 * t)))
+        //GUILayout.BeginHorizontal();
+        if (GUILayout.Button((GameSettings.match_type == 0 ? "5 Minute Match" : "10 Minute Match"), GUILayout.Width(320 * t)))
         {
+            GameSettings.match_type = (GameSettings.match_type + 1) % 2;
         }
-        if (GUILayout.Button("Classic Court", GUILayout.Width(320 * t)))
+        //GUILayout.EndHorizontal();
+        if (GUILayout.Button((GameSettings.music_on ? "Music On" : "Music Off"), GUILayout.Width(250 * t)))
         {
+            GameSettings.music_on = !GameSettings.music_on;
         }
-        GUILayout.EndHorizontal();
 
         GUILayout.EndVertical();
         GUILayout.EndArea();

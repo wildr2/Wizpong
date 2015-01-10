@@ -76,11 +76,6 @@ public class PlayerSetupPage : MenuPage
             GameSettings.ai_controlled[player_number-1] = !GameSettings.ai_controlled[player_number-1];
         }
 
-        // racquet choice
-        if (GUILayout.Button("random racquet", GUILayout.Width(340 * t)))
-        {
-        }
-
         // color choice
         if (GUILayout.Button(GameSettings.player_color_names[GameSettings.player_color_ID[player_number-1]], GUILayout.Width(340 * t)))
         {
