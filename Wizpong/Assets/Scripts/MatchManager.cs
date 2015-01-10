@@ -24,7 +24,7 @@ public class MatchManager : MonoBehaviour
     private bool time_alert_playing = false;
 
     private const float seconds_between_points = 10;
-    private const float seconds_to_first_point = 20;
+    private const float seconds_to_first_point = 5;
     private float seconds_to_next_point; 
 
 
@@ -124,6 +124,7 @@ public class MatchManager : MonoBehaviour
     {
         if (point_over) return;
 
+        bool rewalled = false;
         if (live_wall != null)
         {
             // if the wall hit is the live wall
@@ -132,7 +133,7 @@ public class MatchManager : MonoBehaviour
                 // rewall
                 if (possession != live_wall_possession)
                 {
-                    OnRewall();
+                    rewalled = true;
                 }
             }
             else
@@ -143,12 +144,22 @@ public class MatchManager : MonoBehaviour
             }
         }
         
+        // reset visuals of last touched wall
+        if (gameball.LastWall() != null)
+            gameball.LastWall().SetColorNeutral();
+
         // if first wall bounce since racquet touch
         if (!gameball.HitWallSinceRacquetTouch())
         {
             // make wall live
             MakeWallLiveWall(e.Value);
         }
+        else
+        {
+            // show that this wall was touched
+            e.Value.SetColorTouched();
+        }
+            
 
         // shrink racquet
         if (possession == 1)
@@ -161,6 +172,11 @@ public class MatchManager : MonoBehaviour
         if (last_wall_possession != possession)
             gameball.ResetLifeTime();
         last_wall_possession = possession;
+
+
+        // do rewall after all else
+        if (rewalled)
+            OnRewall();
     }
     private void OnGameBallDeath(object sender, EventArgs e)
     {
@@ -216,7 +232,6 @@ public class MatchManager : MonoBehaviour
 
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 1f));
-        //TimeScaleManager.AddMultiplier("match_event", 0.75f);
         gameball.SetTrailEnabled(false);
         gameball.gameObject.SetActive(false);
 
@@ -224,6 +239,9 @@ public class MatchManager : MonoBehaviour
         SoundManager.PlayPoint();
         SoundManager.StopAlertLoop();
         time_alert_playing = false;
+
+        // walls
+        ResetWalls();
 
         // Score
         if (possession == 1)
@@ -269,6 +287,23 @@ public class MatchManager : MonoBehaviour
         SoundManager.StopAlertLoop();
         time_alert_playing = false;
     }
+    private void ResetWalls()
+    {
+        // return the live wall to normal
+        if (live_wall != null)
+        {
+            Debug.Log("reset live wall");
+            live_wall.FadeColortoNeutral();
+            live_wall = null;
+        }
+        live_wall_possession = 0;
+
+        // reset last touched wall
+        if (gameball.LastWall())
+        {
+            gameball.LastWall().FadeColortoNeutral();
+        }
+    }
 
     private void BeginMatch()
     {
@@ -301,20 +336,6 @@ public class MatchManager : MonoBehaviour
 
         // reset time scale
         TimeScaleManager.RemoveMultiplier("match_event");
-        
-        // return the live wall to normal
-        if (live_wall != null)
-        {
-            live_wall.SetColorNeutral();
-            live_wall = null;
-        }
-
-        // reset wall info
-        live_wall_possession = 0;
-        if (gameball.LastWall())
-        {
-            gameball.LastWall().SetColorNeutral();
-        }
 
         // prepare gameball
         gameball.gameObject.SetActive(true);

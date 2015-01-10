@@ -70,15 +70,15 @@ public class GameBall : MonoBehaviour
         if (col.collider.CompareTag("Wall"))
         {
             Wall wall = col.collider.GetComponent<Wall>();
-            last_wall = wall;
-
+            
             // audio
             SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
 
             // fire event
             if (event_collide_wall != null) event_collide_wall(this, new EventArgs<Wall>(wall));
 
-
+            // wall info
+            last_wall = wall;
             hit_wall_since_racquet = true;
         }
         else if (col.collider.CompareTag("Ball"))

@@ -7,7 +7,7 @@ public class CourtEffects : MonoBehaviour
     public SpriteRenderer court_background;
     private Color court_color_default;
     private Color court_color_flash = Color.black;
-    private float court_flash_timer = 0, court_flash_timer_max = 0.7f;
+    private float court_flash_timer = 0, court_flash_timer_max = 1.2f;
 
     // Confetti
     public ParticleSystem confetti;
@@ -47,7 +47,7 @@ public class CourtEffects : MonoBehaviour
                 break;
             }
 
-            court_background.color = Color.Lerp(court_color_flash, court_color_default, t);
+            court_background.color = Color.Lerp(court_color_flash, court_color_default, Mathf.Pow(t, 4));
             yield return null;
         }
     }
