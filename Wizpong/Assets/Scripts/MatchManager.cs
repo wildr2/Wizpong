@@ -205,7 +205,14 @@ public class MatchManager : MonoBehaviour
     {
         if (point_over) return; // insure this function is not called multiple times per point
         point_over = true;
-        seconds_to_next_point = seconds_between_points;
+
+        // seconds to next point
+        // if there are not enough seconds left for the inter point time, the next point
+        //   will begin immediately
+        if (match_seconds_left > seconds_between_points)
+            seconds_to_next_point = seconds_between_points;
+        else
+            seconds_to_next_point = 0;
 
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 1f));
