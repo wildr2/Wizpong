@@ -11,6 +11,10 @@ public class MovingObjectAudio : MonoBehaviour
     public Rigidbody2D rigidbody;
 
 
+    public void Awake()
+    {
+        audio.volume = 0;
+    }
     public void Update()
     {
         float speed_factor = Mathf.Clamp(rigidbody.velocity.magnitude / max_move_speed, 0, 1);
