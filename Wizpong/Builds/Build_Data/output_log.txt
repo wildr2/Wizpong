@@ -15,17 +15,17 @@ Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpo
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.067 seconds
+- Completed reload, in  0.307 seconds
 desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.dll (this message is harmless)
-UnloadTime: 0.453351 ms
-System memory in use before: 40.0 MB.
+UnloadTime: 1.807743 ms
+System memory in use before: 40.8 MB.
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 39.9 MB.
+System memory in use after: 40.7 MB.
 
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 644.
-Total: 0.839815 ms (FindLiveObjects: 0.037867 ms CreateObjectMapping: 0.013448 ms MarkObjects: 0.167042 ms  DeleteObjects: 0.044591 ms)
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 652.
+Total: 6.412393 ms (FindLiveObjects: 0.203848 ms CreateObjectMapping: 0.096969 ms MarkObjects: 1.527097 ms  DeleteObjects: 0.158549 ms)
 
