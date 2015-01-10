@@ -281,7 +281,7 @@ public class MatchManager : MonoBehaviour
     }
     private IEnumerator BeginNextPoint()
     {
-        yield return new WaitForSeconds(seconds_between_points);
+        yield return new WaitForSeconds(seconds_to_next_point);
 
         point_over = false;
 
