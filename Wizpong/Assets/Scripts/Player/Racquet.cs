@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class Racquet : MonoBehaviour 
@@ -168,15 +169,23 @@ public class Racquet : MonoBehaviour
     }
     public void FireLightning()
     {
-        // strike all controlled shock balls
+        // get shock balls this racquet is in possession of
+        List<ShockBall> owned_shockballs = new List<ShockBall>();
         for (int i = 0; i < shock_balls.Length; ++i)
         {
             if (shock_balls[i].ControllingPlayer() == player_number)
             {
-                lightnings[i].Fire(transform, shock_balls[i].transform);
-                shock_balls[i].UseCharge();
+                owned_shockballs.Add(shock_balls[i]);
             }
         }
+
+        // strike all owned shock balls
+        for (int i = 0; i < owned_shockballs.Count; ++i)
+        {
+            lightnings[i].Fire(transform, owned_shockballs[i].transform, owned_shockballs.Count);
+            owned_shockballs[i].UseCharge();
+        }
+        
     }
     public void SetInputUseFinesse(bool use_finesse)
     {

@@ -8,7 +8,7 @@ public class Lightning : MonoBehaviour
     public Racquet racquet;
 
     // Visual
-    private int max_redraws = 4;
+    private int max_redraws = 6;
     private int redraw_count = 0;
 
     private const int max_num_positions = 30;
@@ -18,6 +18,12 @@ public class Lightning : MonoBehaviour
     private Transform bolt_start, bolt_end;
     private float fixed_distance = 0;
     private Vector2 direction;
+
+    // stun
+    private const float stun_duration = 1f;
+    private int power = 1; // stun_duration is multiplied by power
+
+
 
     // References
     private CameraShake cam_shake;
@@ -35,7 +41,7 @@ public class Lightning : MonoBehaviour
 
         line.SetColors(Color.Lerp(racquet.player_color, Color.white, 0.5f), racquet.player_color);
     }
-    public void Fire(Transform bolt_start, Transform bolt_end)
+    public void Fire(Transform bolt_start, Transform bolt_end, int power)
     {
         this.bolt_start = bolt_start;
         this.bolt_end = bolt_end;
@@ -49,14 +55,15 @@ public class Lightning : MonoBehaviour
         SoundManager.PlayShock();
 
         // draw and collision (stun players)
+        this.power = power;
         StartCoroutine(ReCreateBolt());
     }
-    public void Fire(Transform bolt_start, Transform bolt_end, float fixed_distance)
+    public void Fire(Transform bolt_start, Transform bolt_end, float fixed_distance, int power)
     {
         this.fixed_distance = fixed_distance;
         direction = (bolt_end.position - bolt_start.position).normalized;
 
-        Fire(bolt_start, bolt_end);
+        Fire(bolt_start, bolt_end, power);
     }
 
 
@@ -123,7 +130,7 @@ public class Lightning : MonoBehaviour
             if (r != null && r.player_number != racquet.player_number) // affect only the opponent
             {
                 Vector2 force_direction = ((Vector2)hit.collider.transform.position - (Vector2)bolt_start.position).normalized;
-                r.Stun();
+                r.Stun(stun_duration * power);
             }
         }
     }
