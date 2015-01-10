@@ -8,7 +8,7 @@ public class Lightning : MonoBehaviour
     public Racquet racquet;
 
     // Visual
-    private int max_redraws = 6;
+    private int max_redraws = 4;
     private int redraw_count = 0;
 
     private const int max_num_positions = 30;
@@ -20,7 +20,7 @@ public class Lightning : MonoBehaviour
     private Vector2 direction;
 
     // stun
-    private const float stun_duration = 1f;
+    private const float stun_duration = 0.75f;
     private int power = 1; // stun_duration is multiplied by power
 
 
