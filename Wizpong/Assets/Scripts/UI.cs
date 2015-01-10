@@ -37,7 +37,11 @@ public class UI : MonoBehaviour
     }
     public void UpdatePossessionClock(float time)
     {
-        possession_clock.text = FormatSecMsecTimer(time);
+        possession_clock.text = "score in " + FormatSecMsecTimer(time);
+    }
+    public void UpdateInterPointClock(float time)
+    {
+        possession_clock.text = "next point in " + FormatSecMsecTimer(time);
     }
 
     public void ResetScoreUI()

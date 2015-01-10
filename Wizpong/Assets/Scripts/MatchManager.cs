@@ -23,8 +23,12 @@ public class MatchManager : MonoBehaviour
     private float match_seconds_left, match_length_seconds = 5f * 60;
     private bool time_alert_playing = false;
 
+    private const float seconds_between_points = 10;
+    private const float seconds_to_first_point = 20;
+    private float seconds_to_next_point; 
+
+
     // Other
-    private float seconds_between_points = 3;
     private bool point_over = false;
     private bool game_over = false;
 
@@ -39,14 +43,22 @@ public class MatchManager : MonoBehaviour
         gameball.event_collide_wall += new System.EventHandler<EventArgs<Wall>>(OnGameBallVsWall);
         gameball.event_on_death += new System.EventHandler<EventArgs>(OnGameBallDeath);      
   
-        // match clock
-        match_seconds_left = match_length_seconds;
-
         // cam shake reference
         cam_shake = Camera.main.GetComponent<CameraShake>();
         if (!cam_shake) Debug.LogError("main camera has no CameraShake component");
+
+        // begin
+        BeginMatch();
     }
     public void Update()
+    {
+        UpdateClocks();
+    }
+
+
+    // PRIVATE MODIFIERS
+
+    private void UpdateClocks()
     {
         if (!point_over)
         {
@@ -65,8 +77,13 @@ public class MatchManager : MonoBehaviour
                 time_alert_playing = false;
             }
         }
+        else if (!game_over)
+        {
+            // inter point clock
+            seconds_to_next_point -= Time.deltaTime;
+            ui.UpdateInterPointClock(seconds_to_next_point);
+        }
 
-        
         if (!game_over)
         {
             // match clock
@@ -79,9 +96,6 @@ public class MatchManager : MonoBehaviour
             ui.UpdateMatchClock(match_seconds_left);
         }
     }
-
-
-    // PRIVATE MODIFIERS
 
     private void OnRacquetVsBall(object sender, EventArgs<Rigidbody2D> e)
     {
@@ -191,11 +205,13 @@ public class MatchManager : MonoBehaviour
     {
         if (point_over) return; // insure this function is not called multiple times per point
         point_over = true;
+        seconds_to_next_point = seconds_between_points;
 
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 1f));
-        TimeScaleManager.AddMultiplier("match_event", 0.75f);
+        //TimeScaleManager.AddMultiplier("match_event", 0.75f);
         gameball.SetTrailEnabled(false);
+        gameball.gameObject.SetActive(false);
 
         // audio
         SoundManager.PlayPoint();
@@ -227,7 +243,7 @@ public class MatchManager : MonoBehaviour
 
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 3f));
-        TimeScaleManager.AddMultiplier("match_event", 0.75f);
+        TimeScaleManager.AddMultiplier("match_event", 0.4f);
         gameball.SetTrailEnabled(false);
         
         if (score_p1 > score_p2)
@@ -247,6 +263,22 @@ public class MatchManager : MonoBehaviour
         time_alert_playing = false;
     }
 
+    private void BeginMatch()
+    {
+        point_over = true;
+        game_over = false;
+
+        // match clock
+        match_seconds_left = match_length_seconds;
+
+        // inter point clock
+        seconds_to_next_point = seconds_to_first_point;
+
+        // gameball
+        gameball.gameObject.SetActive(false);
+
+        StartCoroutine("BeginNextPoint");
+    }
     private IEnumerator BeginNextPoint()
     {
         yield return new WaitForSeconds(seconds_between_points);
@@ -278,6 +310,7 @@ public class MatchManager : MonoBehaviour
         }
 
         // prepare gameball
+        gameball.gameObject.SetActive(true);
         gameball.Reset();
 
         // prepare racquets
