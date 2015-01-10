@@ -232,8 +232,7 @@ public class MatchManager : MonoBehaviour
 
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 1f));
-        gameball.SetTrailEnabled(false);
-        gameball.gameObject.SetActive(false);
+        gameball.Hide();
 
         // audio
         SoundManager.PlayPoint();
@@ -241,7 +240,7 @@ public class MatchManager : MonoBehaviour
         time_alert_playing = false;
 
         // walls
-        ResetWalls();
+        StartCoroutine("ResetWallsAfterDelay");
 
         // Score
         if (possession == 1)
@@ -269,7 +268,7 @@ public class MatchManager : MonoBehaviour
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 3f));
         TimeScaleManager.AddMultiplier("match_event", 0.4f);
-        gameball.SetTrailEnabled(false);
+        gameball.Hide();
         
         if (score_p1 > score_p2)
         {
@@ -344,6 +343,11 @@ public class MatchManager : MonoBehaviour
         // prepare racquets
         racquet1.Reset();
         racquet2.Reset();
+    }
+    private IEnumerator ResetWallsAfterDelay()
+    {
+        yield return new WaitForSeconds(seconds_to_next_point / 2f);
+        ResetWalls();
     }
 
 

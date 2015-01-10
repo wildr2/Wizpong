@@ -93,14 +93,24 @@ public class GameBall : MonoBehaviour
         hit_wall_since_racquet = false;
     }
 
+    public void Hide()
+    {
+        rigidbody2D.isKinematic = true;
+        collider2D.enabled = false;
+        ball_renderer.enabled = false;
+        SetTrailEnabled(false);
+    }
     public void Reset()
     {
         // visual
+        ball_renderer.enabled = true;
         SetTrailEnabled(false);
         SetTrailColor(Color.white);
         StartCoroutine("ReenableParticles");
 
         // movement and position
+        rigidbody2D.isKinematic = false;
+        collider2D.enabled = true;
         transform.position = new Vector2(0, 0);
         rigidbody2D.velocity = Vector2.zero;
 
@@ -111,6 +121,7 @@ public class GameBall : MonoBehaviour
         // wall info
         last_wall = null;
     }
+
     public void SetTrailColor(Color color)
     {
         particle_sys.startColor = color;
