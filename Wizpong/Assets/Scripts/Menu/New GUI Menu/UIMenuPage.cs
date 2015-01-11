@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIMenuPage : MonoBehaviour 
 {
     public float seconds = 0.5f;
+    public bool transition_out_on_start = false;
 
     public System.Action on_transitioned_in;
     public System.Action on_transitioned_out;
@@ -20,7 +21,12 @@ public class UIMenuPage : MonoBehaviour
 
     public void Start()
     {
-        TransitionIn();
+        if (transition_out_on_start)
+        {
+            transition = 1;
+            TransitionOut();
+        }
+        else TransitionIn();
     }
 
     public void TransitionIn()
@@ -100,8 +106,11 @@ public class UIMenuPage : MonoBehaviour
             if (transition <= 0)
             {
                 going_out = false;
-                if (on_transitioned_out != null) on_transitioned_out();
                 gameObject.SetActive(false);
+                if (on_transitioned_out != null)
+                {
+                    on_transitioned_out();
+                }
                 break;
             }
 

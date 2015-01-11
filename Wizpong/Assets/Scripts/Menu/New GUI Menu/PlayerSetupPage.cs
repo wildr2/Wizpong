@@ -6,6 +6,7 @@ public class PlayerSetupPage : UIMenuPage
 {
     public Text[] bttn_control_type_text;
     public Text[] bttn_color_text;
+    public UIMenuPage fadescreen_page;
 
 
     public void ButtonControlType(int player_number)
@@ -15,7 +16,9 @@ public class PlayerSetupPage : UIMenuPage
     }
     public void ButtonBegin()
     {
-        TransitionOut();
-        on_transitioned_out = () => Application.LoadLevel("Game");
+        fadescreen_page.TransitionIn();
+        fadescreen_page.on_transitioned_in = () => Application.LoadLevel("Game");
+
+        TransitionOut();        
     }
 }

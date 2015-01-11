@@ -42,13 +42,17 @@ public class ColorPage : UIMenuPage
         b.transform.SetParent(grid.transform);
         b.transform.localScale = new Vector3(1, 1, 1); // fix problem with scale resizing...
         b.onClick.AddListener(() => ButtonColor(0));
+        
 
         // create color buttons
-        for (int id = 1; id < GameSettings.Instance.player_colors.Length; ++id)
+        int n = GameSettings.Instance.player_colors.Length;
+        for (int id = 1; id < n; ++id)
         {
             b = (Button)Instantiate(bttn_prefab);
             b.transform.SetParent(grid.transform);
             b.transform.localScale = new Vector3(1, 1, 1); // fix problem with scale resizing...
+
+            b.GetComponent<UITransitionFade>().offset = (float)id / n;
 
             int param = id;
             b.onClick.AddListener(() => ButtonColor(param));
