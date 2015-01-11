@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIMenuPage : MonoBehaviour 
 {
-    public float seconds = 1;
+    public float seconds = 0.5f;
 
     public System.Action on_transitioned_in;
     public System.Action on_transitioned_out;

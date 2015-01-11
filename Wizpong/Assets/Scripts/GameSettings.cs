@@ -27,7 +27,6 @@ public class GameSettings : MonoBehaviour
         }
     }
 
-
     // player info
     public static bool[] ai_controlled = { false, false };
     public static string[] player_name = { "Player 1", "Player 2" };
@@ -39,7 +38,8 @@ public class GameSettings : MonoBehaviour
     public static bool music_on = true;
 
     // constant data  (perhaps load from file in future)
-    public static Color[] player_colors; // set in initialize
+    [System.NonSerialized]
+    public Color[] player_colors; // set in initialize
     public static string[] player_color_names = { "random color", "red", "pink", "purple", "blue",
                                                   "teal", "green", "lime", "yellow", "orange" };
     private static string[] hex_colors = { "ffffff", "ff0000", "ff00c6", "8949ff", "4c6eff",
@@ -76,10 +76,10 @@ public class GameSettings : MonoBehaviour
     }
     private static void InitializeColorsFromHex()
     {
-        player_colors = new Color[hex_colors.Length];
+        Instance.player_colors = new Color[hex_colors.Length];
         for (int i = 0; i < hex_colors.Length; ++i)
         {
-            player_colors[i] = GeneralHelpers.HexToColor(hex_colors[i]);
+            Instance.player_colors[i] = GeneralHelpers.HexToColor(hex_colors[i]);
         }
     }
 
@@ -93,7 +93,7 @@ public class GameSettings : MonoBehaviour
         {
             if (player_color_ID[i] == 0)
             {
-                player_color_ID[i] = Random.Range(1, player_colors.Length - 1);
+                player_color_ID[i] = Random.Range(1, Instance.player_colors.Length - 1);
                 if (PlayerSameColors()) ++player_color_ID[i];
                 if (player_color_ID[i] == 0) ++player_color_ID[i]; // can't random to random
             }
@@ -109,7 +109,7 @@ public class GameSettings : MonoBehaviour
         if (player_color_ID[player_number - 1] == 0)
             SetUnchosenPlayerColors();
 
-        return player_colors[player_color_ID[player_number - 1]];
+        return Instance.player_colors[player_color_ID[player_number - 1]];
     }
     /// <summary>
     /// Returns whether the players have the same player color selected (random color doesn't count).
