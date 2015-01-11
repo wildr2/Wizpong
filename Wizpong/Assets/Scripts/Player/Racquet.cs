@@ -15,7 +15,7 @@ public class Racquet : MonoBehaviour
 
     // Other
     private CameraShake cam_shake;
-    public UI ui;
+    public CourtUI ui;
     public ControlZoneAudio czone_audio;
 
     // Position and court bounds

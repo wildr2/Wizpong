@@ -8,7 +8,7 @@ public class MatchManager : MonoBehaviour
     // Other References
     public Racquet racquet1, racquet2;
     public GameBall gameball;
-    public UI ui;
+    public CourtUI ui;
     public CourtEffects court_fx;
     private CameraShake cam_shake;
     
@@ -86,8 +86,8 @@ public class MatchManager : MonoBehaviour
 
         if (!game_over)
         {
-            // match clock
-            match_seconds_left -= Time.unscaledDeltaTime;
+            // match clock (uneffected by timescale except when paused)
+            if (Time.timeScale != 0) match_seconds_left -= Time.unscaledDeltaTime;
             if (match_seconds_left <= 0)
             {
                 match_seconds_left = 0;
