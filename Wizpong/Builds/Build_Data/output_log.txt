@@ -15,29 +15,33 @@ Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpo
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.211 seconds
+- Completed reload, in  0.304 seconds
 desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.dll (this message is harmless)
-player number should be 1 or 2
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogWarning(Object)
-ColorPage:ButtonColor(Int32) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:24)
-<CreateColorGrid>c__AnonStoreyF:<>m__1() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:58)
-UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
-UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:578)
-UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
-UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
-UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
-UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
-UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
-UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
-UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
- 
-(Filename: C Line: 0)
+UnloadTime: 10.469199 ms
+System memory in use before: 41.0 MB.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 40.9 MB.
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 798.
+Total: 3.471094 ms (FindLiveObjects: 0.162442 ms CreateObjectMapping: 0.055916 ms MarkObjects: 0.627472 ms  DeleteObjects: 0.149347 ms)
+
+UnloadTime: 6.891226 ms
+System memory in use before: 41.0 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 41.0 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 918.
+Total: 2.436631 ms (FindLiveObjects: 0.082813 ms CreateObjectMapping: 0.026542 ms MarkObjects: 0.706747 ms  DeleteObjects: 0.019464 ms)
+
+UnloadTime: 2.881843 ms
+System memory in use before: 41.0 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 33.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 864.
+Total: 4.976603 ms (FindLiveObjects: 0.077505 ms CreateObjectMapping: 0.029374 ms MarkObjects: 0.899271 ms  DeleteObjects: 1.810928 ms)
 

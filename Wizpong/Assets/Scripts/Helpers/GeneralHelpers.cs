@@ -169,3 +169,12 @@ public class Timer
     }
 
 }
+
+
+public static class TestStat
+{
+    public static void TestMethod()
+    {
+
+    }
+}

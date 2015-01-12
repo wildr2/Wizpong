@@ -14,7 +14,7 @@ public class SoundManager : MonoBehaviour
             {
                 _instance = GameObject.FindObjectOfType<SoundManager>();
 
-                if (_instance == null) Debug.LogError("Missing GameSettings");
+                if (_instance == null) Debug.LogError("Missing SoundManager");
                 else
                 {
                     DontDestroyOnLoad(_instance);
@@ -66,6 +66,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource source_live_wall;
     public AudioSource source_possesion_change;
     public AudioSource source_alert_loop;
+
+    public AudioSource source_ui_button_hover;
+    public AudioSource source_ui_button_click;
+    public AudioSource source_ui_alert;
 
 
 
@@ -244,14 +248,24 @@ public class SoundManager : MonoBehaviour
         Instance.source_alert_loop.Stop();
     }
 
+    public void PlayUIButtonHover()
+    {
+        Instance.source_ui_button_hover.Play();
+    }
+    public void PlayUIButtonClick()
+    {
+        Instance.source_ui_button_click.Play();
+    }
+    public void PlayUIAlert()
+    {
+        Instance.source_ui_alert.Play();
+    }
+
 
     // PRIVATE MODIFIERS
 
     private static void Initialize()
     {
-        // music
-        Instance.music.enabled = GameSettings.music_on;
-
         // other audio
         asg_stunball_stun = new AudioSourceGroup(Instance.prefab_stunball_stun, 2);
         asg_shock = new AudioSourceGroup(Instance.prefab_shock, 6);
