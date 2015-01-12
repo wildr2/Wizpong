@@ -4,29 +4,11 @@ using System.Collections.Generic;
 
 
 /// <summary>
-/// A singleton that manages multiple assignments to Time.timescale
+/// Manages multiple assignments to Time.timescale
 /// </summary>
 public class TimeScaleManager : MonoBehaviour 
 {
-    private static TimeScaleManager _instance;
-    public static TimeScaleManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<TimeScaleManager>();
-
-                if (_instance == null) Debug.LogError("Missing TimeScaleManager");
-                else
-                {
-                    DontDestroyOnLoad(_instance);
-                    Initialize();
-                }
-            }
-            return _instance;
-        }
-    }
+    public float initial_time_scale = 1;
 
     // time scale multipliers (id, multipliers on this layer (the top float is the used one))
     private static Dictionary<string, Stack<float>> multipliers = new Dictionary<string, Stack<float>>();
@@ -37,20 +19,8 @@ public class TimeScaleManager : MonoBehaviour
 
     public void Awake()
     {
-        // if this is the first instance, make this the singleton
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(_instance);
-        }
-        else
-        {
-            // destroy other instances that are not the already existing singleton
-            if (this != _instance)
-                Destroy(this.gameObject);
-        }
-
-        Initialize();
+        Time.timeScale = initial_time_scale;
+        AddMultiplier("original_time_scale", initial_time_scale, false);
     }
     public void Update()
     {
@@ -118,10 +88,6 @@ public class TimeScaleManager : MonoBehaviour
 
     // PRIVATE MODIFIERS
 
-    private static void Initialize()
-    {
-        AddMultiplier("original_time_scale", Time.timeScale, false);
-    }
     private static void UpdateCurrentTimeScale()
     {
         current_time_scale = 1;
