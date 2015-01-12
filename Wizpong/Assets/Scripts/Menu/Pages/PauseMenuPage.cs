@@ -28,7 +28,7 @@ public class PauseMenuPage : UIMenuPage
     }
     public void ButtonRestart()
     {
-
+        Application.LoadLevel("Game");
     }
     public void ButtonQuit()
     {

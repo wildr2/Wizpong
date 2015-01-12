@@ -78,6 +78,18 @@ public class GeneralHelpers
     }
 }
 
+public static class CoroutineUtil
+{
+    public static IEnumerator WaitForRealSeconds(float time)
+    {
+        float start = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
+    }
+}
+
 public class EventArgs<T> : EventArgs
 {
     public T Value { get; private set; }

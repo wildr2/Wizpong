@@ -14,11 +14,11 @@ public class PlayerSetupPage : UIMenuPage
         GameSettings.ai_controlled[player_number-1] = !GameSettings.ai_controlled[player_number-1];
         bttn_control_type_text[player_number-1].text = (GameSettings.ai_controlled[player_number-1] ? "AI" : "Human");
     }
-    public void ButtonBegin()
+    public void ButtonBeginYes()
     {
         fadescreen_page.TransitionIn();
         fadescreen_page.on_transitioned_in = () => Application.LoadLevel("Game");
 
-        TransitionOut();        
+        TransitionOut();
     }
 }

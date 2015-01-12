@@ -28,6 +28,9 @@ public class SoundManager : MonoBehaviour
     // Music
     public AudioSource music;
 
+    // Volumes
+    public float volume_fx = 1, volume_music = 1;
+
     // Audio source groups
     public AudioSource prefab_stunball_stun;
     private static AudioSourceGroup asg_stunball_stun;

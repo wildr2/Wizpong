@@ -105,7 +105,7 @@ public class UIMenuPage : MonoBehaviour
         }
 
         // delay before transition begins
-        yield return new WaitForSeconds(delay_seconds);
+        yield return StartCoroutine(CoroutineUtil.WaitForRealSeconds(delay_seconds));
 
         // transition
         while (true)
@@ -138,7 +138,7 @@ public class UIMenuPage : MonoBehaviour
         }
 
         // delay before transition begins
-        yield return new WaitForSeconds(delay_seconds);
+        yield return StartCoroutine(CoroutineUtil.WaitForRealSeconds(delay_seconds));
 
         // transition
         while (true)
@@ -178,6 +178,10 @@ public class UIMenuPage : MonoBehaviour
     public bool IsGoingIn()
     {
         return going_in;
+    }
+    public bool IsTransitioning()
+    {
+        return going_in || going_out;
     }
 	public float Transition()
     {

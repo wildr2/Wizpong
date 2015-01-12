@@ -4,16 +4,18 @@ using System.Collections;
 public class PauseController : MonoBehaviour 
 {
     public PauseMenuPage pause_menu;
+    public FadeScreenPage fade_page;
     public bool Paused { get; private set; }
 
 
     public void Start()
     {
-        Paused = false;
+        Pause();
+        fade_page.on_transitioned_out = () => UnPause();
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !fade_page.IsTransitioning())
         {
             if (Paused) pause_menu.ButtonResume();
             else
