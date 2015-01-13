@@ -21,7 +21,7 @@ public class MatchSetupPage : UIMenuPage
     }
     public void ButtonMatchType()
     {
-        GameSettings.match_type = (GameSettings.match_type + 1) % 2;
+        GameSettings.match_type = (GameSettings.match_type + 1) % 3;
         ResetButtonMatchType(GameSettings.match_type);
     }
 
@@ -34,6 +34,6 @@ public class MatchSetupPage : UIMenuPage
     {
         bttn_match_type_text.text =
             match_type == 0 ? "5 Minute Match" :
-            "10 Minute Match";
+            match_type == 1 ? "10 Minute Match" : "1 Minute Match";
     }
 }
