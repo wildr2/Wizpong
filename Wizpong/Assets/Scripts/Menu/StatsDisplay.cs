@@ -16,6 +16,8 @@ public class StatsDisplay : MonoBehaviour
 
     public void UpdateDisplay()
     {
+        Debug.Log(GameSettings.player_name[0]);
+
         // player names
         player1_heading.text = GameSettings.player_name[0];
         player2_heading.text = GameSettings.player_name[1];

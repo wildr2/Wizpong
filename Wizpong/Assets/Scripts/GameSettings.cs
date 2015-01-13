@@ -73,9 +73,6 @@ public class GameSettings : MonoBehaviour
     {
         // colors
         InitializeColorsFromHex();
-
-        // player names
-        player_name = new string[] { "Player 1", "Player 2" };
     }
     private static void InitializeColorsFromHex()
     {
