@@ -11,6 +11,7 @@ public class MatchManager : MonoBehaviour
     public CourtUI ui;
     public CourtEffects court_fx;
     private CameraShake cam_shake;
+    public GGPage gg_page;
     
     // Current point information
     private int last_possession = 0, possession = 0; // 0 is nobody, 1 is player 1...
@@ -302,7 +303,7 @@ public class MatchManager : MonoBehaviour
 
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 3f));
-        TimeScaleManager.AddMultiplier("match_event", 0.4f);
+        TimeScaleManager.AddMultiplier("match_event", 0.5f);
         gameball.Hide();
         
         if (score_p1 > score_p2)
@@ -323,6 +324,9 @@ public class MatchManager : MonoBehaviour
         SoundManager.PlayGameOver();
         SoundManager.StopAlertLoop();
         time_alert_playing = false;
+
+        // end page
+        StartCoroutine("OpenGGPageAfterDelay");
     }
     private void ResetWalls()
     {
@@ -347,7 +351,7 @@ public class MatchManager : MonoBehaviour
         game_over = false;
 
         // match clock
-        match_length_seconds = (GameSettings.match_type == 0 ? 5 : 10) * 60;
+        match_length_seconds = (GameSettings.match_type == 0 ? 0.2f : 10) * 60;
         match_seconds_left = match_length_seconds;
 
         // inter point clock
@@ -385,6 +389,11 @@ public class MatchManager : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds_to_next_point / 2f);
         ResetWalls();
+    }
+    private IEnumerator OpenGGPageAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        gg_page.TransitionIn();
     }
 
 
@@ -433,5 +442,8 @@ public class MatchManager : MonoBehaviour
         if (total == 0) return 0.5f;
         return possession_time_p1 / total;
     }
-
+    public int GetWinningPlayer()
+    {
+        return score_p1 > score_p2 ? 1 : score_p1 < score_p2 ? 2 : 0; 
+    }
 }
