@@ -316,6 +316,9 @@ public class MatchManager : MonoBehaviour
             court_fx.FlashCourtColor(racquet2.player_color);
         }
 
+        // walls
+        StartCoroutine("ResetWallsAfterDelay");
+
         // audio
         SoundManager.PlayGameOver();
         SoundManager.StopAlertLoop();
