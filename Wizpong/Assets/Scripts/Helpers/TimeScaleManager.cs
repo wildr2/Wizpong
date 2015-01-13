@@ -19,7 +19,8 @@ public class TimeScaleManager : MonoBehaviour
 
     public void Awake()
     {
-        Time.timeScale = initial_time_scale;
+        current_time_scale = initial_time_scale;
+        Time.timeScale = current_time_scale;
         AddMultiplier("original_time_scale", initial_time_scale, false);
     }
     public void Update()
