@@ -441,8 +441,13 @@ public class MatchManager : MonoBehaviour
         if (total == 0) return 0.5f;
         return possession_time_p1 / total;
     }
+
     public int GetWinningPlayer()
     {
         return score_p1 > score_p2 ? 1 : score_p1 < score_p2 ? 2 : 0; 
+    }
+    public bool GameOver()
+    {
+        return game_over;
     }
 }
