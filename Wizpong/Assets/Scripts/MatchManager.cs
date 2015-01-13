@@ -207,8 +207,6 @@ public class MatchManager : MonoBehaviour
     }
     private void OnRacquetStunned(object sender, EventArgs<float> e)
     {
-        Debug.Log("stun");
-
         Racquet r = sender as Racquet;
         if (r == null) return;
 
