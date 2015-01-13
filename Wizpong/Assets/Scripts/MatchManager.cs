@@ -18,8 +18,7 @@ public class MatchManager : MonoBehaviour
     private int live_wall_possession = 0; // possession when live_wall wall was made live
     private int last_wall_possession = 0;
 
-    // Scoring and time
-    private int score_p1 = 0, score_p2 = 0;
+    // Timing
     private float match_seconds_left, match_length_seconds = 5f * 60;
     private bool time_alert_playing = false;
 
@@ -27,6 +26,11 @@ public class MatchManager : MonoBehaviour
     private const float seconds_to_first_point = 5;
     private float seconds_to_next_point; 
 
+    // stats
+    private int score_p1 = 0, score_p2 = 0;
+    private int rewalls_p1 = 0, rewalls_p2 = 0;
+    private float time_stunned_p1 = 0, time_stunned_p2 = 0;
+    private float possession_time_p1 = 0, possession_time_p2 = 0;
 
     // Other
     private bool point_over = false;
@@ -40,8 +44,13 @@ public class MatchManager : MonoBehaviour
         // hook up to match events
         racquet1.event_collide_ball += new System.EventHandler<EventArgs<Rigidbody2D>>(OnRacquetVsBall);
         racquet2.event_collide_ball += new System.EventHandler<EventArgs<Rigidbody2D>>(OnRacquetVsBall);
+
+        racquet1.event_stunned += new EventHandler<EventArgs<float>>(OnRacquetStunned);
+        racquet2.event_stunned += new EventHandler<EventArgs<float>>(OnRacquetStunned); 
+
         gameball.event_collide_wall += new System.EventHandler<EventArgs<Wall>>(OnGameBallVsWall);
         gameball.event_on_death += new System.EventHandler<EventArgs>(OnGameBallDeath);      
+        
   
         // cam shake reference
         cam_shake = Camera.main.GetComponent<CameraShake>();
@@ -53,6 +62,7 @@ public class MatchManager : MonoBehaviour
     public void Update()
     {
         UpdateClocks();
+        UpdatePossessionTimeStats();
     }
 
 
@@ -94,6 +104,17 @@ public class MatchManager : MonoBehaviour
                 OnGameOver();
             }
             ui.UpdateMatchClock(match_seconds_left);
+        }
+    }
+    private void UpdatePossessionTimeStats()
+    {
+        // uneffected by timescale except when paused
+        if (!point_over && Time.timeScale != 0)
+        {
+            if (possession == 1)
+                possession_time_p1 += Time.unscaledDeltaTime;
+            else if (possession == 2)
+                possession_time_p2 += Time.unscaledDeltaTime;
         }
     }
 
@@ -183,9 +204,20 @@ public class MatchManager : MonoBehaviour
         if (point_over) return;
         OnPoint();
     }
+    private void OnRacquetStunned(object sender, EventArgs<float> e)
+    {
+        Debug.Log("stun");
+
+        Racquet r = sender as Racquet;
+        if (r == null) return;
+
+        if (r.player_number == 1) time_stunned_p1 += e.Value;
+        else time_stunned_p2 += e.Value;
+    }
 
     private void OnPosessionChange()
     {
+        // racquet changes
         if (possession == 1)
         {
             racquet1.SetAttackingPlayer(true);
@@ -205,6 +237,10 @@ public class MatchManager : MonoBehaviour
     {
         SoundManager.PlayRewall();
         ui.SetScoreTextRewall();
+
+        if (possession == 1) rewalls_p1 += 1;
+        else rewalls_p2 += 1;
+
         OnPoint();
     }
     private void MakeWallLiveWall(Wall wall)
@@ -256,7 +292,6 @@ public class MatchManager : MonoBehaviour
 
         // score text
         ui.UpdateScoreUI(score_p1, score_p2);
-
 
         StartCoroutine("BeginNextPoint");
     }
@@ -365,6 +400,35 @@ public class MatchManager : MonoBehaviour
 
     // PUBLIC ACCESSORS
 
-
+    public int GetPointsP1()
+    {
+        return score_p1;
+    }
+    public int GetPointsP2()
+    {
+        return score_p2;
+    }
+    public int GetRewallsP1()
+    {
+        return rewalls_p1;
+    }
+    public int GetRewallsP2()
+    {
+        return rewalls_p2;
+    }
+    public float GetTimeStunnedP1()
+    {
+        return time_stunned_p1;
+    }
+    public float GetTimeStunnedP2()
+    {
+        return time_stunned_p2;
+    }
+    public float GetPosessionPercentageP1()
+    {
+        float total = possession_time_p1 + possession_time_p2;
+        if (total == 0) return 0.5f;
+        return possession_time_p1 / total;
+    }
 
 }

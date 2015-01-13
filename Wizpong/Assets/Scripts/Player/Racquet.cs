@@ -54,6 +54,7 @@ public class Racquet : MonoBehaviour
 
     // Events
     public event EventHandler<EventArgs<Rigidbody2D>> event_collide_ball;
+    public event EventHandler<EventArgs<float>> event_stunned;
 
 
     // PUBLIC MODIFIERS
@@ -156,8 +157,12 @@ public class Racquet : MonoBehaviour
 
         if (duration > stun_time_left)
         {
+            if (event_stunned != null) event_stunned(this, new EventArgs<float>(duration - stun_time_left));
+
             stun_duration = duration;
             stun_time_left = duration;
+
+            
         }
 
         if (!stunned)
