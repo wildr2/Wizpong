@@ -103,13 +103,24 @@ public class GameSettings : MonoBehaviour
 
     // PUBLIC ACCESSORS
 
-    public static Color GetPlayerColor(int player_number)
+    /// <summary>
+    /// If can be random is true and "random color" is currently selected, white is returned and
+    /// the color is not changed.
+    /// </summary>
+    /// <param name="player_number"></param>
+    /// <param name="can_be_random"></param>
+    /// <returns></returns>
+    public static Color GetPlayerColor(int player_number, bool can_be_random)
     {
         // set colors for players with random color selected
-        if (player_color_ID[player_number - 1] == 0)
+        if (player_color_ID[player_number - 1] == 0 && !can_be_random)
             SetUnchosenPlayerColors();
 
         return Instance.player_colors[player_color_ID[player_number - 1]];
+    }
+    public static Color GetPlayerColor(int player_number)
+    {
+        return GetPlayerColor(player_number, false);
     }
     /// <summary>
     /// Returns whether the players have the same player color selected (random color doesn't count).

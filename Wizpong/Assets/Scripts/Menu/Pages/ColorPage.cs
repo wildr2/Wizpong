@@ -6,11 +6,8 @@ public class ColorPage : UIMenuPage
 {
     public Button bttn_prefab, random_bttn_prefab;
     public GridLayoutGroup grid;
-    public UIMenuPage back_page;
-
-    public Image[] racquet_previews;
-    public Text[] color_bttn_texts;
-
+    public PlayerSetupPage player_page;
+    
     private int choosing_player_number = 1;
 
 
@@ -24,16 +21,18 @@ public class ColorPage : UIMenuPage
         if (choosing_player_number < 1 || choosing_player_number > 1) Debug.LogWarning("player number should be 1 or 2");
         GameSettings.player_color_ID[choosing_player_number - 1] = color_id;
 
-        racquet_previews[choosing_player_number - 1].color = GameSettings.Instance.player_colors[color_id];
-        color_bttn_texts[choosing_player_number - 1].text = GameSettings.player_color_names[color_id];
+        player_page.ResetColorPreviewAndButton(choosing_player_number,
+            GameSettings.Instance.player_colors[color_id], GameSettings.player_color_names[color_id]);
 
         TransitionOut();
-        if (back_page != null) back_page.TransitionIn();
+        if (player_page != null) player_page.TransitionIn();
     }
     public void SetChoosingPlayerNumber(int number)
     {
         choosing_player_number = number;
     }
+    
+
     
     private void CreateColorGrid()
     {
