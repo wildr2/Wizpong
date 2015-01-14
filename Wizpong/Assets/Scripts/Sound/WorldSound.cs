@@ -6,24 +6,19 @@ using System.Collections;
 public class WorldSound : MonoBehaviour
 {
     public bool timescaled_pitch = true;
-    private float initial_volume;
-    private float initial_pitch;
+    public float base_volume = 1;
+    public float base_pitch = 1;
+    private float pitch_offset = 0;
 
 
-    public void Start()
-    {
-        initial_volume = audio.volume;
-        initial_pitch = audio.pitch;
-    }
     public void Update()
     {
         // volume
-        audio.volume = initial_volume;
-        if (timescaled_pitch) audio.volume *= Time.timeScale * GameSettings.volume_fx;
+        audio.volume = base_volume * GameSettings.volume_fx;
 
         // pitch
-        audio.pitch = initial_pitch;
-        if (timescaled_pitch) audio.volume *= Time.timeScale;
+        audio.pitch = Mathf.Max(base_pitch + pitch_offset, 0);
+        if (timescaled_pitch) audio.pitch *= Time.timeScale;
 
         // disable when finished
         if (!audio.isPlaying) gameObject.SetActive(false);
@@ -34,6 +29,11 @@ public class WorldSound : MonoBehaviour
         gameObject.SetActive(true);
         audio.Play();
         Update();
+    }
+
+    public void SetPitchOffset(float offset)
+    {
+        pitch_offset = offset;
     }
 	
 }

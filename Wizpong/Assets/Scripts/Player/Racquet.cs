@@ -43,7 +43,7 @@ public class Racquet : MonoBehaviour
     private const float finesse_overheat_stun_duration = 2f;
     
     // Lightning ability
-    public PooledObject lightning_prefab;
+    public Lightning lightning_prefab;
     public ShockBall[] shock_balls; 
 
     // Input
@@ -201,7 +201,8 @@ public class Racquet : MonoBehaviour
         // strike all owned shock balls
         for (int i = 0; i < owned_shockballs.Count; ++i)
         {
-            Lightning lightning = ObjectPool.Instance.GetPooledObject(lightning_prefab, false).GetComponent<Lightning>();
+            Lightning lightning = ObjectPool.Instance.GetObject(lightning_prefab, false);
+            //Lightning lightning = ObjectPool.Instance.GetPooledObject(lightning_prefab, false).GetComponent<Lightning>();
             lightning.Initialize(this);
             lightning.Fire(transform, owned_shockballs[i].transform, owned_shockballs.Count);
 

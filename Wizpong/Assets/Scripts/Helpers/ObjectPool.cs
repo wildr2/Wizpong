@@ -27,14 +27,19 @@ public class ObjectPool : MonoBehaviour
         _instance = this;
     }
 
-    public void RequestObjects(PooledObject prefab, int count, bool stack)
+    public void RequestObjects<T>(T prefab, int count, bool stack) where T : UnityEngine.Component
     {
         if (prefab == null)
         {
             Debug.LogError("Attempt to request pooling objects based on a null prefab.");
             return;
         }
-
+        PooledObject prefab_pooled_obj = prefab.GetComponent<PooledObject>();
+        if (prefab_pooled_obj == null)
+        {
+            Debug.LogError("Attempt to request pooling objects based on a prefab with no PooledObject component.");
+            return;
+        }
 
         // get / make the list of specified objects
         LinkedList<PooledObject> list;
@@ -53,14 +58,14 @@ public class ObjectPool : MonoBehaviour
         int initial_count = list.Count;
         while (list.Count < count || (stack && list.Count < initial_count + count))
         {
-            PooledObject obj = (PooledObject)Instantiate(prefab);
+            PooledObject obj = (PooledObject)Instantiate(prefab_pooled_obj);
             obj.transform.parent = transform;
             list.AddFirst(obj);
             obj.SetParentListReference(list);
             obj.gameObject.SetActive(false);
         }
     }
-    public PooledObject GetPooledObject(PooledObject prefab, bool active_only)
+    public T GetObject<T>(T prefab, bool active_only) where T : UnityEngine.Component
     {
         // find the list of objects specified
         if (!objects.ContainsKey(prefab.name))
@@ -68,7 +73,7 @@ public class ObjectPool : MonoBehaviour
             Debug.LogError("There are no objects of name " + prefab.name + " in the ObjectPool");
             return null;
         }
-        
+
         LinkedList<PooledObject> list = objects[prefab.name];
         if (list.Count == 0)
         {
@@ -83,10 +88,18 @@ public class ObjectPool : MonoBehaviour
         if (!obj.gameObject.activeInHierarchy || !active_only)
         {
             // object is available or we can take it anyway (not active_only)
+
+            T obj_casted = obj.GetComponent<T>();
+            if (obj_casted == null)
+            {
+                Debug.LogError("The objects of name " + prefab.name + " do not have components of specified type");
+                return null;
+            }
+
             list.Remove(obj);
             list.AddFirst(obj);
             obj.gameObject.SetActive(true);
-            return obj;
+            return obj_casted;
         }
         else return null;
     }
