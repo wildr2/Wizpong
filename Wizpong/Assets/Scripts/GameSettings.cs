@@ -20,7 +20,7 @@ public class GameSettings : MonoBehaviour
                 else
                 {
                     DontDestroyOnLoad(_instance);
-                    Initialize();
+                    _instance.Initialize();
                 }
             }
             return _instance;
@@ -28,24 +28,23 @@ public class GameSettings : MonoBehaviour
     }
 
     // Audio volumes
-    public static float volume_fx = 1, volume_music = 1;
+    public float volume_fx = 1, volume_music = 1;
 
     // Player info
-    public static bool[] ai_controlled = { false, false };
-    public static string[] player_name = { "Player 1", "Player 2" };
-    public static int[] player_color_ID = { 0, 0 };
+    public bool[] ai_controlled = { false, false };
+    public string[] player_name = { "Player 1", "Player 2" };
+    public int[] player_color_ID = { 0, 0 };
 
 	// Match info
-    public static int court;
-    public static int match_type;
-    public static bool music_on = true;
+    public int match_type;
+    public bool music_on = true;
 
     // Constant data  (perhaps load from file in future)
     [System.NonSerialized]
     public Color[] player_colors; // set in initialize
-    public static string[] player_color_names = { "random color", "red", "pink", "purple", "blue",
+    public string[] player_color_names = { "random color", "red", "pink", "purple", "blue",
                                                   "teal", "green", "lime", "yellow", "orange" };
-    private static string[] hex_colors = { "ffffff", "ff0000", "ff00c6", "8949ff", "4c6eff",
+    private string[] hex_colors = { "ffffff", "ff0000", "ff00c6", "8949ff", "4c6eff",
                             "4cc2ff", "09ff49", "a5ff09", "f8ff38", "ff9a38" };
 
 
@@ -72,17 +71,17 @@ public class GameSettings : MonoBehaviour
 
     // PRIVATE MODIFIERS
 
-    private static void Initialize()
+    private void Initialize()
     {
         // colors
         InitializeColorsFromHex();
     }
-    private static void InitializeColorsFromHex()
+    private void InitializeColorsFromHex()
     {
-        Instance.player_colors = new Color[hex_colors.Length];
+        player_colors = new Color[hex_colors.Length];
         for (int i = 0; i < hex_colors.Length; ++i)
         {
-            Instance.player_colors[i] = GeneralHelpers.HexToColor(hex_colors[i]);
+            player_colors[i] = GeneralHelpers.HexToColor(hex_colors[i]);
         }
     }
 
@@ -90,13 +89,13 @@ public class GameSettings : MonoBehaviour
     /// If any player has selected random color, this will choose a color for them, insuring that no players
     /// have the same color
     /// </summary>
-    private static void SetUnchosenPlayerColors()
+    private void SetUnchosenPlayerColors()
     {
         for (int i = 0; i < 2; ++i)
         {
             if (player_color_ID[i] == 0)
             {
-                player_color_ID[i] = Random.Range(1, Instance.player_colors.Length - 1);
+                player_color_ID[i] = Random.Range(1, player_colors.Length - 1);
                 if (PlayerSameColors()) ++player_color_ID[i];
                 if (player_color_ID[i] == 0) ++player_color_ID[i]; // can't random to random
             }
@@ -113,15 +112,17 @@ public class GameSettings : MonoBehaviour
     /// <param name="player_number"></param>
     /// <param name="can_be_random"></param>
     /// <returns></returns>
-    public static Color GetPlayerColor(int player_number, bool can_be_random)
+    public Color GetPlayerColor(int player_number, bool can_be_random)
     {
-        // set colors for players with random color selected
-        if (player_color_ID[player_number - 1] == 0 && !can_be_random)
-            SetUnchosenPlayerColors();
+        GameSettings s = Instance;
 
-        return Instance.player_colors[player_color_ID[player_number - 1]];
+        // set colors for players with random color selected
+        if (s.player_color_ID[player_number - 1] == 0 && !can_be_random)
+            s.SetUnchosenPlayerColors();
+
+        return s.player_colors[s.player_color_ID[player_number - 1]];
     }
-    public static Color GetPlayerColor(int player_number)
+    public Color GetPlayerColor(int player_number)
     {
         return GetPlayerColor(player_number, false);
     }
@@ -129,8 +130,9 @@ public class GameSettings : MonoBehaviour
     /// Returns whether the players have the same player color selected (random color doesn't count).
     /// </summary>
     /// <returns></returns>
-    public static bool PlayerSameColors()
+    public bool PlayerSameColors()
     {
-        return player_color_ID[0] == player_color_ID[1] && player_color_ID[0] != 0;
+        GameSettings s = Instance;
+        return s.player_color_ID[0] == s.player_color_ID[1] && s.player_color_ID[0] != 0;
     }    
 }

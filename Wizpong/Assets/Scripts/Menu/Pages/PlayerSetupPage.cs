@@ -16,22 +16,22 @@ public class PlayerSetupPage : UIMenuPage
     {
         for (int pn = 1; pn < 3; ++pn)
         {
-            ResetButtonControlType(pn, GameSettings.ai_controlled[pn - 1]);
-            ResetInputFieldPlayerName(pn, GameSettings.player_name[pn - 1]);
-            ResetColorPreviewAndButton(pn, GameSettings.GetPlayerColor(pn, true),
-                GameSettings.player_color_names[GameSettings.player_color_ID[pn - 1]]);
+            ResetButtonControlType(pn, GameSettings.Instance.ai_controlled[pn - 1]);
+            ResetInputFieldPlayerName(pn, GameSettings.Instance.player_name[pn - 1]);
+            ResetColorPreviewAndButton(pn, GameSettings.Instance.GetPlayerColor(pn, true),
+                GameSettings.Instance.player_color_names[GameSettings.Instance.player_color_ID[pn - 1]]);
         }
             
     }
 
     public void ButtonControlType(int player_number)
     {
-        GameSettings.ai_controlled[player_number - 1] = ! GameSettings.ai_controlled[player_number - 1];
-        ResetButtonControlType(player_number, GameSettings.ai_controlled[player_number - 1]);
+        GameSettings.Instance.ai_controlled[player_number - 1] = ! GameSettings.Instance.ai_controlled[player_number - 1];
+        ResetButtonControlType(player_number, GameSettings.Instance.ai_controlled[player_number - 1]);
     }
     public void InputFieldEnterPlayerName(int player_number)
     {
-        GameSettings.player_name[player_number - 1] = name_input[player_number - 1].text;
+        GameSettings.Instance.player_name[player_number - 1] = name_input[player_number - 1].text;
     }
     public void ButtonBeginYes()
     {

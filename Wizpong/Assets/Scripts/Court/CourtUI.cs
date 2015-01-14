@@ -27,8 +27,8 @@ public class CourtUI : MonoBehaviour
     public void Start()
     {
         // color markers
-        color_marker1.color = GameSettings.GetPlayerColor(1);
-        color_marker2.color = GameSettings.GetPlayerColor(2);
+        color_marker1.color = GameSettings.Instance.GetPlayerColor(1);
+        color_marker2.color = GameSettings.Instance.GetPlayerColor(2);
     }
 
     public void UpdateMatchClock(float time)

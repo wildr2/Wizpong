@@ -14,7 +14,7 @@ public class WorldSound : MonoBehaviour
     public void Update()
     {
         // volume
-        audio.volume = base_volume * GameSettings.volume_fx;
+        audio.volume = base_volume * GameSettings.Instance.volume_fx;
 
         // pitch
         audio.pitch = Mathf.Max(base_pitch + pitch_offset, 0);

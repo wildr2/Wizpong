@@ -16,9 +16,11 @@ public class StatsDisplay : MonoBehaviour
 
     public void UpdateDisplay()
     {
+        Debug.Log("stats display update");
+
         // player names
-        player1_heading.text = GameSettings.player_name[0];
-        player2_heading.text = GameSettings.player_name[1];
+        player1_heading.text = GameSettings.Instance.player_name[0];
+        player2_heading.text = GameSettings.Instance.player_name[1];
 
 
         // points bar
@@ -28,7 +30,7 @@ public class StatsDisplay : MonoBehaviour
         else pct = match.GetPointsP1() / total_points;
 
         points_bar.Set(match.GetPointsP1().ToString(), match.GetPointsP2().ToString(), pct);
-        points_bar.SetColors(GameSettings.GetPlayerColor(1), GameSettings.GetPlayerColor(2));
+        points_bar.SetColors(GameSettings.Instance.GetPlayerColor(1), GameSettings.Instance.GetPlayerColor(2));
 
 
         // possession bar
@@ -37,7 +39,7 @@ public class StatsDisplay : MonoBehaviour
         string pct_right = ((int)((1-pct)*100f)).ToString() + "%";
 
         possession_bar.Set(pct_left, pct_right, pct);
-        possession_bar.SetColors(GameSettings.GetPlayerColor(1), GameSettings.GetPlayerColor(2));
+        possession_bar.SetColors(GameSettings.Instance.GetPlayerColor(1), GameSettings.Instance.GetPlayerColor(2));
 
 
         // rewalls bar
@@ -46,7 +48,7 @@ public class StatsDisplay : MonoBehaviour
         else pct = match.GetRewallsP1() / total_rewalls;
 
         rewalls_bar.Set(match.GetRewallsP1().ToString(), match.GetRewallsP2().ToString(), pct);
-        rewalls_bar.SetColors(GameSettings.GetPlayerColor(1), GameSettings.GetPlayerColor(2));
+        rewalls_bar.SetColors(GameSettings.Instance.GetPlayerColor(1), GameSettings.Instance.GetPlayerColor(2));
 
 
         // stun bar
@@ -55,7 +57,7 @@ public class StatsDisplay : MonoBehaviour
         else pct = match.GetTimeStunnedP1() / total_stun_time;
 
         stun_bar.Set(((int)match.GetTimeStunnedP1()).ToString() + "s", ((int)match.GetTimeStunnedP2()).ToString() + "s", pct);
-        stun_bar.SetColors(GameSettings.GetPlayerColor(1), GameSettings.GetPlayerColor(2));
+        stun_bar.SetColors(GameSettings.Instance.GetPlayerColor(1), GameSettings.Instance.GetPlayerColor(2));
     }
     
 }

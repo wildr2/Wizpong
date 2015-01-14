@@ -25,17 +25,17 @@ public class UIAudio : MonoBehaviour
 
     public void PlayButtonHover()
     {
-        Instance.source_button_hover.volume = 0.1f * GameSettings.volume_fx;
+        Instance.source_button_hover.volume = 0.1f * GameSettings.Instance.volume_fx;
         Instance.source_button_hover.Play();
     }
     public void PlayButtonClick()
     {
-        Instance.source_button_click.volume = GameSettings.volume_fx;
+        Instance.source_button_click.volume = GameSettings.Instance.volume_fx;
         Instance.source_button_click.Play();
     }
     public void PlayAlert()
     {
-        Instance.source_alert.volume = GameSettings.volume_fx;
+        Instance.source_alert.volume = GameSettings.Instance.volume_fx;
         Instance.source_alert.Play();
     }
 }

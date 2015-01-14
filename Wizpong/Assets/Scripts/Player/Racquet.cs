@@ -61,7 +61,7 @@ public class Racquet : MonoBehaviour
     public void Awake()
     {   
         // set colors
-        player_color = GameSettings.GetPlayerColor(player_number);
+        player_color = GameSettings.Instance.GetPlayerColor(player_number);
         ring_sprite.color = player_color;
         inside_sprite.color = player_color;
 

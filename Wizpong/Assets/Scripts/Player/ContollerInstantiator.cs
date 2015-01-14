@@ -8,7 +8,7 @@ public class ContollerInstantiator : MonoBehaviour
 
     public void Awake()
     {
-        if (GameSettings.ai_controlled[racquet.player_number - 1])
+        if (GameSettings.Instance.ai_controlled[racquet.player_number - 1])
         {
             AIController c = gameObject.AddComponent<AIController>();
             c.Instantiate(racquet, match);

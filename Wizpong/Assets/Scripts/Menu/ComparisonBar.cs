@@ -8,10 +8,7 @@ public class ComparisonBar : MonoBehaviour
     public RectTransform left_bar, right_bar;
     public Text left_text, right_text;
 
-    public void Start()
-    {
-        SetWidths(0.5f);
-    }
+
     public void Set(string left_text, string right_text, float left_pct)
     {
         // set text

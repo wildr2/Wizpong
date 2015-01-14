@@ -10,19 +10,19 @@ public class MatchSetupPage : UIMenuPage
 
     public void Start()
     {
-        ResetButtonMusic(GameSettings.music_on);
-        ResetButtonMatchType(GameSettings.match_type);
+        ResetButtonMusic(GameSettings.Instance.music_on);
+        ResetButtonMatchType(GameSettings.Instance.match_type);
     }
 
     public void ButtonMusic()
     {
-        GameSettings.music_on = !GameSettings.music_on;
-        ResetButtonMusic(GameSettings.music_on);
+        GameSettings.Instance.music_on = !GameSettings.Instance.music_on;
+        ResetButtonMusic(GameSettings.Instance.music_on);
     }
     public void ButtonMatchType()
     {
-        GameSettings.match_type = (GameSettings.match_type + 1) % 3;
-        ResetButtonMatchType(GameSettings.match_type);
+        GameSettings.Instance.match_type = (GameSettings.Instance.match_type + 1) % 3;
+        ResetButtonMatchType(GameSettings.Instance.match_type);
     }
 
 

@@ -14,7 +14,7 @@ public class ControlZoneAudio : MonoBehaviour
 
     public void Update()
     {
-        max_volume = base_max_volume * GameSettings.volume_fx;
+        max_volume = base_max_volume * GameSettings.Instance.volume_fx;
 
         if (playing)
         {

@@ -350,8 +350,8 @@ public class MatchManager : MonoBehaviour
         game_over = false;
 
         // match clock
-        match_length_seconds = (GameSettings.match_type == 0 ? 5 :
-                                GameSettings.match_type == 1 ? 10 : 1) * 60;
+        match_length_seconds = (GameSettings.Instance.match_type == 0 ? 5 :
+                                GameSettings.Instance.match_type == 1 ? 10 : 1) * 60;
         match_seconds_left = match_length_seconds;
 
         // inter point clock
