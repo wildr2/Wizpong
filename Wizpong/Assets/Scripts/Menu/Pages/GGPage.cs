@@ -16,7 +16,7 @@ public class GGPage : InGameMenuPage
         }
         else if (result == 2)
         {
-            heading.text = GameSettings.player_name[0] + " Victory";
+            heading.text = GameSettings.player_name[1] + " Victory";
         }
         else
             heading.text = "Draw";

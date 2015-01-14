@@ -27,17 +27,20 @@ public class GameSettings : MonoBehaviour
         }
     }
 
-    // player info
+    // Audio volumes
+    public static float volume_fx = 1, volume_music = 1;
+
+    // Player info
     public static bool[] ai_controlled = { false, false };
     public static string[] player_name = { "Player 1", "Player 2" };
     public static int[] player_color_ID = { 0, 0 };
 
-	// match info
+	// Match info
     public static int court;
     public static int match_type;
     public static bool music_on = true;
 
-    // constant data  (perhaps load from file in future)
+    // Constant data  (perhaps load from file in future)
     [System.NonSerialized]
     public Color[] player_colors; // set in initialize
     public static string[] player_color_names = { "random color", "red", "pink", "purple", "blue",

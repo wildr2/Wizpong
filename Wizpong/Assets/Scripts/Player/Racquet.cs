@@ -15,7 +15,6 @@ public class Racquet : MonoBehaviour
 
     // Other
     private CameraShake cam_shake;
-    public CourtUI ui;
     public ControlZoneAudio czone_audio;
 
     // Position and court bounds
@@ -44,8 +43,7 @@ public class Racquet : MonoBehaviour
     private const float finesse_overheat_stun_duration = 2f;
     
     // Lightning ability
-    public const float lightning_cost = 5; // cost to the finesse clock
-    public Lightning[] lightnings;
+    public PooledObject lightning_prefab;
     public ShockBall[] shock_balls; 
 
     // Input
@@ -60,7 +58,7 @@ public class Racquet : MonoBehaviour
     // PUBLIC MODIFIERS
 
     public void Awake()
-    {
+    {   
         // set colors
         player_color = GameSettings.GetPlayerColor(player_number);
         ring_sprite.color = player_color;
@@ -68,6 +66,9 @@ public class Racquet : MonoBehaviour
 
         // save initial racquet pos
         initial_pos = transform.position;
+
+        // pool lightning objects
+        ObjectPool.Instance.RequestObjects(lightning_prefab, 3, false);
     }
     public void Start()
     {
@@ -200,7 +201,10 @@ public class Racquet : MonoBehaviour
         // strike all owned shock balls
         for (int i = 0; i < owned_shockballs.Count; ++i)
         {
-            lightnings[i].Fire(transform, owned_shockballs[i].transform, owned_shockballs.Count);
+            Lightning lightning = ObjectPool.Instance.GetPooledObject(lightning_prefab, false).GetComponent<Lightning>();
+            lightning.Initialize(this);
+            lightning.Fire(transform, owned_shockballs[i].transform, owned_shockballs.Count);
+
             owned_shockballs[i].UseCharge();
         }
         

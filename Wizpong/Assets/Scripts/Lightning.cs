@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 public class Lightning : MonoBehaviour 
 {
-    public Racquet racquet;
-
     // Visual
     private int max_redraws = 4;
     private int redraw_count = 0;
@@ -23,9 +21,8 @@ public class Lightning : MonoBehaviour
     private const float stun_duration = 0.75f;
     private int power = 1; // stun_duration is multiplied by power
 
-
-
     // References
+    private Racquet racquet;
     private CameraShake cam_shake;
     public LayerMask racquets_layer;
 
@@ -33,13 +30,13 @@ public class Lightning : MonoBehaviour
 
     // PUBLIC MODIFIERS
 
-    public void Start()
+    public void Initialize(Racquet racquet)
     {
-        // get references
+        this.racquet = racquet;
+        line.SetColors(Color.Lerp(racquet.player_color, Color.white, 0.5f), racquet.player_color);
+
         cam_shake = Camera.main.GetComponent<CameraShake>();
         if (!cam_shake) Debug.LogError("no CameraShake found");
-
-        line.SetColors(Color.Lerp(racquet.player_color, Color.white, 0.5f), racquet.player_color);
     }
     public void Fire(Transform bolt_start, Transform bolt_end, int power)
     {
