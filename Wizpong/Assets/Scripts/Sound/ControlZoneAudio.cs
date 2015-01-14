@@ -5,7 +5,8 @@ public class ControlZoneAudio : MonoBehaviour
 {
     public AudioSource source;
     public float pitch_offset = 1;
-    public float max_volume = 0.1f;
+    public float base_max_volume = 0.1f;
+    private float max_volume = 0.1f;
 
     private bool playing = false;
     private float fade_speed = 8f;
@@ -13,6 +14,8 @@ public class ControlZoneAudio : MonoBehaviour
 
     public void Update()
     {
+        max_volume = base_max_volume * GameSettings.volume_fx;
+
         if (playing)
         {
             // fade in
