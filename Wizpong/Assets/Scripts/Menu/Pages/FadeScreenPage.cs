@@ -9,7 +9,7 @@ public class FadeScreenPage : UIMenuPage
     private bool initialized = false;
 
 
-    new public void Awake()
+    public void Awake()
     {
         if (!initialized)
             Initiailze();

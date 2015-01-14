@@ -3,11 +3,11 @@ using System.Collections;
 
 public class ShockBall : MonoBehaviour
 {
-    public BallAudio audio;
+    public BallAudio ball_audio;
 
     private int controlling_player = 0; // 0 is noone, 1 is player 1...
 
-    public SpriteRenderer renderer;
+    public SpriteRenderer sprite_renderer;
     public TextMesh charge_text;
     private Color color_uncontrolled;
 
@@ -17,7 +17,7 @@ public class ShockBall : MonoBehaviour
 
     public void Start()
     {
-        color_uncontrolled = renderer.color;
+        color_uncontrolled = sprite_renderer.color;
     }
 
     public void OnCollisionEnter2D(Collision2D col)
@@ -25,12 +25,12 @@ public class ShockBall : MonoBehaviour
         if (col.collider.CompareTag("Wall"))
         {
             // audio
-            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
+            ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
         }
         else if (col.collider.CompareTag("Ball"))
         {
             // audio
-            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
+            ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
         }
     }
 
@@ -38,13 +38,13 @@ public class ShockBall : MonoBehaviour
     {
         // set controlling player
         controlling_player = racquet.player_number;
-        renderer.color = Color.Lerp(color_uncontrolled, racquet.player_color, 0.5f);
+        sprite_renderer.color = Color.Lerp(color_uncontrolled, racquet.player_color, 0.5f);
 
         charges = max_charges;
         charge_text.text = charges.ToString();
 
         // audio
-        audio.PlayPossessSound();
+        ball_audio.PlayPossessSound();
     }
     public void UseCharge()
     {
@@ -53,7 +53,7 @@ public class ShockBall : MonoBehaviour
         {
             // set as uncontrolled
             controlling_player = 0;
-            renderer.color = color_uncontrolled;
+            sprite_renderer.color = color_uncontrolled;
             charge_text.text = "";
         }
         else

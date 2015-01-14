@@ -8,10 +8,12 @@ public class MatchSetupPage : UIMenuPage
     public Text bttn_match_type_text;
 
 
-    public void Start()
+    new public void Start()
     {
         ResetButtonMusic(GameSettings.Instance.music_on);
         ResetButtonMatchType(GameSettings.Instance.match_type);
+
+        base.Start();
     }
 
     public void ButtonMusic()

@@ -7,7 +7,6 @@ public class CourtEffects : MonoBehaviour
     public SpriteRenderer court_background;
     private Color court_color_default;
     private Color court_color_flash = Color.black;
-    private float court_flash_timer = 0, court_flash_timer_max = 1.2f;
 
     // Confetti
     public ParticleSystem confetti;

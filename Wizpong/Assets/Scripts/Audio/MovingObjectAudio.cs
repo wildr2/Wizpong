@@ -8,7 +8,7 @@ public class MovingObjectAudio : MonoBehaviour
     public float max_pitch = 2;
     public float pitch_offset = 0;
 
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D rbody;
 
 
     public void Awake()
@@ -17,7 +17,7 @@ public class MovingObjectAudio : MonoBehaviour
     }
     public void Update()
     {
-        float speed_factor = Mathf.Clamp(rigidbody.velocity.magnitude / max_move_speed, 0, 1);
+        float speed_factor = Mathf.Clamp(rbody.velocity.magnitude / max_move_speed, 0, 1);
 
         // louder volume when moving faster
         if (Time.timeScale == 0) audio.volume = 0;

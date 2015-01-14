@@ -12,7 +12,7 @@ public class MatchManager : MonoBehaviour
     public CourtEffects court_fx;
     private CameraShake cam_shake;
     public GGPage gg_page;
-    public MatchAudio audio;
+    public MatchAudio match_audio;
     
     // Current point information
     private int last_possession = 0, possession = 0; // 0 is nobody, 1 is player 1...
@@ -80,12 +80,12 @@ public class MatchManager : MonoBehaviour
 
             if (!time_alert_playing && possession_seconds_left < 3)
             {
-                audio.PlayAlertLoop();
+                match_audio.PlayAlertLoop();
                 time_alert_playing = true;
             }
             else if (time_alert_playing && possession_seconds_left >= 3)
             {
-                audio.StopAlertLoop();
+                match_audio.StopAlertLoop();
                 time_alert_playing = false;
             }
         }
@@ -231,11 +231,11 @@ public class MatchManager : MonoBehaviour
 
         // audio
         if (last_possession != 0)
-            audio.PlayPosessionChange();
+            match_audio.PlayPosessionChange();
     }
     private void OnRewall()
     {
-        audio.PlayRewall();
+        match_audio.PlayRewall();
         ui.SetScoreTextRewall();
 
         if (possession == 1) rewalls_p1 += 1;
@@ -251,7 +251,7 @@ public class MatchManager : MonoBehaviour
         live_wall.SetColorLive(PossessorPlayerColor());
 
         // audio
-        audio.PlayLiveWall();
+        match_audio.PlayLiveWall();
     }
     private void OnPoint()
     {
@@ -271,8 +271,8 @@ public class MatchManager : MonoBehaviour
         gameball.Hide();
 
         // audio
-        audio.PlayPoint();
-        audio.StopAlertLoop();
+        match_audio.PlayPoint();
+        match_audio.StopAlertLoop();
         time_alert_playing = false;
 
         // walls
@@ -320,8 +320,8 @@ public class MatchManager : MonoBehaviour
         StartCoroutine("ResetWallsAfterDelay");
 
         // audio
-        audio.PlayGameOver();
-        audio.StopAlertLoop();
+        match_audio.PlayGameOver();
+        match_audio.StopAlertLoop();
         time_alert_playing = false;
 
         // end page
@@ -373,7 +373,7 @@ public class MatchManager : MonoBehaviour
         last_possession = 0;
 
         // audio
-        audio.PlayBeginPoint();
+        match_audio.PlayBeginPoint();
 
         // reset time scale
         TimeScaleManager.RemoveMultiplier("match_event");

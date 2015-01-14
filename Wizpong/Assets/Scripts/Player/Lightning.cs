@@ -130,7 +130,6 @@ public class Lightning : MonoBehaviour
             Racquet r = hit.collider.GetComponent<Racquet>();
             if (r != null && r.player_number != racquet.player_number) // affect only the opponent
             {
-                Vector2 force_direction = ((Vector2)hit.collider.transform.position - (Vector2)bolt_start.position).normalized;
                 r.Stun(stun_duration * power);
             }
         }

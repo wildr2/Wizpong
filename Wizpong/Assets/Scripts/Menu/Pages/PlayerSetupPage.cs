@@ -12,7 +12,7 @@ public class PlayerSetupPage : UIMenuPage
     public FadeScreenPage fadescreen_page;
 
 
-    public void Start()
+    new public void Start()
     {
         for (int pn = 1; pn < 3; ++pn)
         {
@@ -21,7 +21,8 @@ public class PlayerSetupPage : UIMenuPage
             ResetColorPreviewAndButton(pn, GameSettings.Instance.GetPlayerColor(pn, true),
                 GameSettings.Instance.player_color_names[GameSettings.Instance.player_color_ID[pn - 1]]);
         }
-            
+
+        base.Start();
     }
 
     public void ButtonControlType(int player_number)

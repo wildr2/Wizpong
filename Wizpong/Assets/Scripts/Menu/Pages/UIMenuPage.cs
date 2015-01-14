@@ -71,7 +71,7 @@ public class UIMenuPage : MonoBehaviour
             UpdateTransitioningObjectList();
             transform.SetAsFirstSibling(); // make the bottommost page (to disable interaction with lower pages)
 
-            OnTransitionOut();
+            OnStartTransitionOut();
 
             going_in = false;
             StopCoroutine("UpdateTransitionIn");

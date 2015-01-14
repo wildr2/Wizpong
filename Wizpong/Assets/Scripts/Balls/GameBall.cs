@@ -10,7 +10,7 @@ public class GameBall : MonoBehaviour
     public SpriteRenderer ball_renderer;
     public ParticleSystem particle_sys;
     private CameraShake cam_shake;
-    public BallAudio audio;
+    public BallAudio ball_audio;
 
     // Shrink
     private bool shrinking = false;
@@ -73,7 +73,7 @@ public class GameBall : MonoBehaviour
             Wall wall = col.collider.GetComponent<Wall>();
             
             // audio
-            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
+            ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
             //SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
 
             // fire event
@@ -86,7 +86,7 @@ public class GameBall : MonoBehaviour
         else if (col.collider.CompareTag("Ball"))
         {
             // audio
-            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
+            ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
             //SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
         }
        

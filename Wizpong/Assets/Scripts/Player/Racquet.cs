@@ -16,11 +16,10 @@ public class Racquet : MonoBehaviour
     // Other
     private CameraShake cam_shake;
     public ControlZoneAudio czone_audio;
-    public RacquetAudio audio;
+    public RacquetAudio racquet_audio;
 
     // Position and court bounds
     private const int bounds_width = 31, bounds_height = 17;
-    private Vector2 initial_pos;
 
     // Finesse ability
     private bool using_finesse = false;
@@ -64,9 +63,6 @@ public class Racquet : MonoBehaviour
         player_color = GameSettings.Instance.GetPlayerColor(player_number);
         ring_sprite.color = player_color;
         inside_sprite.color = player_color;
-
-        // save initial racquet pos
-        initial_pos = transform.position;
 
         // pool lightning objects
         ObjectPool.Instance.RequestObjects(lightning_prefab, 3, false);
@@ -175,7 +171,7 @@ public class Racquet : MonoBehaviour
         }
 
         // audio
-        audio.PlayStunSound();
+        racquet_audio.PlayStunSound();
     }
     public void Stun()
     {

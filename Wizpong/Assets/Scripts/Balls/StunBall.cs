@@ -5,13 +5,13 @@ public class StunBall : MonoBehaviour
 {
     // Other references
     private CameraShake cam_shake;
-    public StunBallAudio audio;
+    public StunBallAudio ball_audio;
 
     private int controlling_player = 0; // 0 is noone, 1 is player 1...
     private const float duration_controlled = 2;
     private const float stun_duration = 2;
 
-    public SpriteRenderer renderer;
+    public SpriteRenderer sprite_renderer;
     private Color color_uncontrolled;
 
     private Collider2D controlling_colider;
@@ -24,7 +24,7 @@ public class StunBall : MonoBehaviour
 
     public void Start()
     {
-        color_uncontrolled = renderer.color;
+        color_uncontrolled = sprite_renderer.color;
         layer_racquet_czone = LayerMask.NameToLayer(layer_name_racquet_czone);
 
         cam_shake = Camera.main.GetComponent<CameraShake>();
@@ -49,12 +49,12 @@ public class StunBall : MonoBehaviour
         else if (col.collider.CompareTag("Wall"))
         {
             // audio
-            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
+            ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
         }
         else if (col.collider.CompareTag("Ball"))
         {
             // audio
-            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
+            ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
         }
     }
     public void TryTakeControlOfBall(Racquet racquet, Collider2D physical_collider)
@@ -63,7 +63,7 @@ public class StunBall : MonoBehaviour
         {
             // set controlling player
             controlling_player = racquet.player_number;
-            renderer.color = Color.Lerp(color_uncontrolled, racquet.player_color, 0.35f);
+            sprite_renderer.color = Color.Lerp(color_uncontrolled, racquet.player_color, 0.35f);
 
             // insure the ball only collides with the opponent (physical racquet)
             controlling_colider = physical_collider;
@@ -73,7 +73,7 @@ public class StunBall : MonoBehaviour
             StartCoroutine("ResetControllingPlayer");
 
             // audio
-            audio.PlayPossessSound();
+            ball_audio.PlayPossessSound();
         } 
     }
 
@@ -81,7 +81,7 @@ public class StunBall : MonoBehaviour
     private void HitRacquet(Racquet r)
     {
         r.Stun(stun_duration);
-        audio.PlayStunSound();
+        ball_audio.PlayStunSound();
         cam_shake.Shake(new CamShakeInstance(0.4f, 0.5f));
     }
     private IEnumerator ResetControllingPlayer()
@@ -89,7 +89,7 @@ public class StunBall : MonoBehaviour
         yield return new WaitForSeconds(duration_controlled);
         
         controlling_player = 0;
-        renderer.color = color_uncontrolled;
+        sprite_renderer.color = color_uncontrolled;
 
         // allow the ball to be controlled by racquets again
         Physics2D.IgnoreCollision(this.collider2D, controlling_colider, false);
