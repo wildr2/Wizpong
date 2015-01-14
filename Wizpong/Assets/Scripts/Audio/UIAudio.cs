@@ -23,6 +23,11 @@ public class UIAudio : MonoBehaviour
     public AudioSource source_alert;
 
 
+    public void Update()
+    {
+        Instance.source_alert.volume = GameSettings.Instance.volume_fx;
+    }
+
     public void PlayButtonHover()
     {
         Instance.source_button_hover.volume = 0.1f * GameSettings.Instance.volume_fx;
@@ -37,5 +42,15 @@ public class UIAudio : MonoBehaviour
     {
         Instance.source_alert.volume = GameSettings.Instance.volume_fx;
         Instance.source_alert.Play();
+    }
+    public void StartSoundTest()
+    {
+        Instance.source_alert.volume = GameSettings.Instance.volume_fx;
+        Instance.source_alert.loop = true;
+        Instance.source_alert.Play();
+    }
+    public void StopSoundTest()
+    {
+        Instance.source_alert.loop = false;
     }
 }
