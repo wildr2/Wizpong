@@ -3,8 +3,16 @@ using System.Collections;
 
 public class PopUp : MonoBehaviour
 {
+    private UIAudio audio;
+
+    public void Awake()
+    {
+        audio = Object.FindObjectOfType<UIAudio>();
+        if (audio == null) Debug.LogError("Missing UIAudio");
+    }
+
 	public void OnEnable()
     {
-        SoundManager.Instance.PlayUIAlert();
+        audio.PlayAlert();
     }
 }

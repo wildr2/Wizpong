@@ -33,7 +33,6 @@ public class InGameMenuPage : UIMenuPage
 
     private void Quit()
     {
-        SoundManager.Instance.music.Stop();
         Application.LoadLevel("Main Menu");
     }
     private IEnumerator CheckForUnHideInput()

@@ -21,6 +21,9 @@ public class Lightning : MonoBehaviour
     private const float stun_duration = 0.75f;
     private int power = 1; // stun_duration is multiplied by power
 
+    // audio
+    public WorldSound shock_sound;
+
     // References
     private Racquet racquet;
     private CameraShake cam_shake;
@@ -49,7 +52,8 @@ public class Lightning : MonoBehaviour
         redraw_count = 0;
         
         // audio
-        SoundManager.PlayShock();
+        //SoundManager.PlayShock();
+        shock_sound.Play();
 
         // draw and collision (stun players)
         this.power = power;
