@@ -7,6 +7,7 @@ public class InGameMenuPage : UIMenuPage
 
     private bool hidden = false;
 
+
     public void ButtonHideMenu()
     {
         if (hidden) return;

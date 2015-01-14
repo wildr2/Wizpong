@@ -20,7 +20,8 @@ public class MovingObjectAudio : MonoBehaviour
         float speed_factor = Mathf.Clamp(rigidbody.velocity.magnitude / max_move_speed, 0, 1);
 
         // louder volume when moving faster
-        audio.volume = speed_factor * GameSettings.Instance.volume_fx;
+        if (Time.timeScale == 0) audio.volume = 0;
+        else audio.volume = speed_factor * GameSettings.Instance.volume_fx;
 
         // faster playback when moving faster
         audio.pitch = pitch_offset + speed_factor * Time.timeScale * max_pitch;

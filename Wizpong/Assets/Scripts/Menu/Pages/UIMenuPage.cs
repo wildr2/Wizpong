@@ -71,6 +71,8 @@ public class UIMenuPage : MonoBehaviour
             UpdateTransitioningObjectList();
             transform.SetAsFirstSibling(); // make the bottommost page (to disable interaction with lower pages)
 
+            OnTransitionOut();
+
             going_in = false;
             StopCoroutine("UpdateTransitionIn");
 
@@ -84,7 +86,7 @@ public class UIMenuPage : MonoBehaviour
     }
 
 
-    // PRIVATE MODIFIERS
+    // PRIVATE / PROTECTED MODIFIERS
 
     private void UpdateTransitioningObjectList()
     {
@@ -155,6 +157,7 @@ public class UIMenuPage : MonoBehaviour
             if (transition <= 0)
             {
                 going_out = false;
+                OnFinishTransitionOut();
                 gameObject.SetActive(false);
                 if (on_transitioned_out != null)
                 {
@@ -166,7 +169,9 @@ public class UIMenuPage : MonoBehaviour
             yield return null;
         }
     }
-    
+
+    protected virtual void OnStartTransitionOut() { }
+    protected virtual void OnFinishTransitionOut() { }
 
 
     // PUBLIC ACCESSORS

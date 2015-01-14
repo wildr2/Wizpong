@@ -7,8 +7,11 @@ public class GGPage : InGameMenuPage
     public MatchManager match;
     public Text heading;
 
+
     public void OnEnable()
     {
+        UIAudio.Instance.PlayPause();
+
         int result = match.GetWinningPlayer();
         if (result == 1)
         {

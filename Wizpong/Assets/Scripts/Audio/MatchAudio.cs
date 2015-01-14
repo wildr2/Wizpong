@@ -13,6 +13,19 @@ public class MatchAudio : MonoBehaviour
     public AudioSource source_alert_loop;
 
 
+    public void Update()
+    {
+        // turn off looping sounds when paused
+        if (Time.timeScale == 0)
+        {
+            source_alert_loop.volume = 0;
+        }
+        else
+        {
+            source_alert_loop.volume = GameSettings.Instance.volume_fx;
+        }
+    }
+
     public void PlayRewall()
     {
         source_rewall.volume = GameSettings.Instance.volume_fx;
