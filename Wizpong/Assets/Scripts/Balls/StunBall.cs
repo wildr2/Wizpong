@@ -3,7 +3,9 @@ using System.Collections;
 
 public class StunBall : MonoBehaviour 
 {
+    // Other references
     private CameraShake cam_shake;
+    public BallAudio audio;
 
     private int controlling_player = 0; // 0 is noone, 1 is player 1...
     private const float duration_controlled = 2;
@@ -16,7 +18,7 @@ public class StunBall : MonoBehaviour
     public string layer_name_racquet_czone;
     private int layer_racquet_czone;
 
-    public AudioSource audio_on_stun;
+    
     
 
 
@@ -47,12 +49,12 @@ public class StunBall : MonoBehaviour
         else if (col.collider.CompareTag("Wall"))
         {
             // audio
-            SoundManager.PlayStunBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 50f);
         }
         else if (col.collider.CompareTag("Ball"))
         {
             // audio
-            SoundManager.PlayStunBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 50f);
         }
     }
     public void TryTakeControlOfBall(Racquet racquet, Collider2D physical_collider)

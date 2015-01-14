@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ShockBall : MonoBehaviour
 {
+    public BallAudio audio;
+
     private int controlling_player = 0; // 0 is noone, 1 is player 1...
 
     public SpriteRenderer renderer;
@@ -23,12 +25,12 @@ public class ShockBall : MonoBehaviour
         if (col.collider.CompareTag("Wall"))
         {
             // audio
-            SoundManager.PlayShockBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 50f);
         }
         else if (col.collider.CompareTag("Ball"))
         {
             // audio
-            SoundManager.PlayShockBallBump(transform.position, rigidbody2D.velocity.magnitude / 50f);
+            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 50f);
         }
     }
 
