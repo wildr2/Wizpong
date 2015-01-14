@@ -16,6 +16,7 @@ public class Racquet : MonoBehaviour
     // Other
     private CameraShake cam_shake;
     public ControlZoneAudio czone_audio;
+    public RacquetAudio audio;
 
     // Position and court bounds
     private const int bounds_width = 31, bounds_height = 17;
@@ -174,7 +175,7 @@ public class Racquet : MonoBehaviour
         }
 
         // audio
-        SoundManager.PlayStun();
+        audio.PlayStunSound();
     }
     public void Stun()
     {

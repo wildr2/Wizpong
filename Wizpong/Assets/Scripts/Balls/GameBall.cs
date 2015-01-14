@@ -73,7 +73,7 @@ public class GameBall : MonoBehaviour
             Wall wall = col.collider.GetComponent<Wall>();
             
             // audio
-            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 100f);
+            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
             //SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
 
             // fire event
@@ -86,7 +86,7 @@ public class GameBall : MonoBehaviour
         else if (col.collider.CompareTag("Ball"))
         {
             // audio
-            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 100f);
+            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
             //SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
         }
        

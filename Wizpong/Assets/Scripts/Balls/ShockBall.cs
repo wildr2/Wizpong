@@ -25,12 +25,12 @@ public class ShockBall : MonoBehaviour
         if (col.collider.CompareTag("Wall"))
         {
             // audio
-            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 50f);
+            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
         }
         else if (col.collider.CompareTag("Ball"))
         {
             // audio
-            audio.PlayBumpSound(transform.position, rigidbody2D.velocity.magnitude / 50f);
+            audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 50f);
         }
     }
 
@@ -44,7 +44,7 @@ public class ShockBall : MonoBehaviour
         charge_text.text = charges.ToString();
 
         // audio
-        SoundManager.PlayShockballPossess(transform.position);
+        audio.PlayPossessSound();
     }
     public void UseCharge()
     {

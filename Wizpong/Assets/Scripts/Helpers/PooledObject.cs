@@ -14,6 +14,10 @@ public class PooledObject : MonoBehaviour
         // finished objects are put to the end of their ObjectPool list
         parent_list.Remove(this);
         parent_list.AddLast(this);
+
+        // if the object was moved in the hierarchy, move it back to the pool
+        if (transform.parent != ObjectPool.Instance.transform)
+            transform.SetParent(ObjectPool.Instance.transform);
     }
 
     public void SetParentListReference(LinkedList<PooledObject> list)
