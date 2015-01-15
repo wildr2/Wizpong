@@ -137,10 +137,6 @@ public class MatchManager : MonoBehaviour
                 OnPosessionChange();
                 last_possession = possession;
             }
-            
-            gameball.SetTrailColor(r.player_color);
-
-            gameball.SetShrinking(true);
         }
     }
     private void OnGameBallVsWall(object sender, EventArgs<Wall> e)
@@ -182,18 +178,7 @@ public class MatchManager : MonoBehaviour
             // show that this wall was touched
             e.Value.SetColorTouched();
         }
-            
-
-        // shrink racquet
-        //if (possession == 1)
-        //    racquet1.ResetControlZone();
-        //else if (possession == 2)
-        //    racquet2.ResetControlZone();
-
-
-        // gameball lifetime reset
-        if (last_wall_possession != possession)
-            gameball.ResetLifeTime();
+         
         last_wall_possession = possession;
 
 
@@ -222,12 +207,18 @@ public class MatchManager : MonoBehaviour
         {
             racquet1.SetAttackingPlayer(true);
             racquet2.SetAttackingPlayer(false);
+            gameball.SetTrailColor(racquet1.player_color);
         }
         else
         {
             racquet2.SetAttackingPlayer(true);
             racquet1.SetAttackingPlayer(false);
+            gameball.SetTrailColor(racquet2.player_color);
         }
+
+        // gameball lifetime reset
+        if (last_wall_possession != possession)
+            gameball.StartShrinking();
 
         // audio
         if (last_possession != 0)
@@ -274,6 +265,10 @@ public class MatchManager : MonoBehaviour
         match_audio.PlayPoint();
         match_audio.StopAlertLoop();
         time_alert_playing = false;
+
+        // racquets
+        racquet1.Reset();
+        racquet2.Reset();
 
         // walls
         StartCoroutine("ResetWallsAfterDelay");
@@ -450,5 +445,9 @@ public class MatchManager : MonoBehaviour
     public bool GameOver()
     {
         return game_over;
+    }
+    public bool PointOver()
+    {
+        return point_over;
     }
 }

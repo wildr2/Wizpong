@@ -133,14 +133,11 @@ public class GameBall : MonoBehaviour
     {
         particle_sys.enableEmission = enabled;
     }
-    public void ResetLifeTime()
+    
+    public void StartShrinking()
     {
-        life_time = life_time_initial;
-        UpdateSize();
-    }
-    public void SetShrinking(bool shrink)
-    {
-        this.shrinking = shrink;
+        ResetLifeTime();
+        this.shrinking = true;
     }
 
 
@@ -156,6 +153,11 @@ public class GameBall : MonoBehaviour
     {
         yield return null;
         particle_sys.enableEmission = true;
+    }
+    private void ResetLifeTime()
+    {
+        life_time = life_time_initial;
+        UpdateSize();
     }
 
 
