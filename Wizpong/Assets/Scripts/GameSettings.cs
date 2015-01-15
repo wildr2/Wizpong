@@ -43,9 +43,9 @@ public class GameSettings : MonoBehaviour
     [System.NonSerialized]
     public Color[] player_colors; // set in initialize
     public string[] player_color_names = { "random color", "red", "pink", "purple", "blue",
-           "teal", "green", "lime", "yellow", "orange", "maroon", "navy", "indigo" };
+           "teal", "green", "lime", "yellow", "orange", "maroon" };
     private string[] hex_colors = { "ffffff", "ff0000", "ff00c6", "8949ff", "4c6eff",
-           "4cc2ff", "09ff49", "a5ff09", "f8ff38", "ff9a38", "6f1a4a", "11116c", "2c1ccf" };
+           "4cc2ff", "09ff49", "a5ff09", "f8ff38", "ff9a38", "6f1a4a" };
 
 
     // PUBLIC MODIFIERS
