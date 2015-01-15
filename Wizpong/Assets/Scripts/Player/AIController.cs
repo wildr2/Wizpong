@@ -17,57 +17,13 @@ public class AIController : MonoBehaviour
         this.racquet = racquet;
         this.match = match;
     }
-    public void Update()
-    {
-        
-        // movement
-        //    while (true)
-        //    {
-        //        if (game_ball.Possession() != player_number     || true)
-        //        {
-        //            // go for the ball
-        //            input_direction = game_ball.transform.position - transform.position;
-        //        }
-        //        else if (!controlling_ball)
-        //        {
-        //            if (true)
-        //            {
-        //                // follow the opponent
-        //                if (player_number == 1)
-        //                    input_direction = game_ball.racquet2.transform.position - transform.position;
-        //                else
-        //                    input_direction = game_ball.racquet1.transform.position - transform.position;
-        //            }
-        //            else
-        //            {
-        //                //return to the middle
-        //                input_direction = (-transform.position).normalized;
-        //            }
-        //        }
-
-        //        // lightning
-        //        if (Random.Range(0, 50) <= 1)
-        //        {
-        //            input_ligtning = true;
-        //        }
-
-
-        //        input_direction.Normalize();
-        //        input_direction = new Vector2(Mathf.RoundToInt(input_direction.x), Mathf.RoundToInt(input_direction.y));
-
-        //        yield return new WaitForSeconds(0.1f);
-        //    }
-
-
-        
-    }
 
     private IEnumerator UpdateInput()
     {
         while (true)
         {
             UpdateMovement();
-            UpdateLightning();
+            //UpdateLightning();
 
             yield return new WaitForSeconds(0.1f);
         }
@@ -99,12 +55,22 @@ public class AIController : MonoBehaviour
     }
     private void UpdateMovement()
     {
-        if (racquet.ControllingBall()) return;
+        if (racquet.ControllingBall() || match.PointOver()) return;
 
         Vector2 move_direction = new Vector2();
 
         // go for the game ball
-        move_direction = (match.gameball.transform.position - racquet.transform.position).normalized;
+        Vector2 v_to_gameball = match.gameball.transform.position - racquet.transform.position;
+        move_direction = v_to_gameball.normalized;
+        
+        // enable control zone when close to ball
+        if (v_to_gameball.magnitude < 2.5f && !racquet.ControlZoneEnabled())
+        {
+            racquet.EnableControlZone();
+            racquet.SetInputUseFinesse(true);
+            StartCoroutine("StopFinesseAfterWait");
+        }
+
 
         racquet.SetMoveDirection(move_direction);
     }
@@ -114,5 +80,14 @@ public class AIController : MonoBehaviour
         {
             racquet.FireLightning();
         }
+    }
+
+    private IEnumerator StopFinesseAfterWait()
+    {
+        float wait = Random.Range(0.1f, 0.5f);
+        yield return new WaitForSeconds(wait);
+
+        if (!racquet.ControllingBall()) racquet.DisableControlZone();
+        racquet.SetInputUseFinesse(false);
     }
 }

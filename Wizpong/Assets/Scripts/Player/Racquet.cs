@@ -131,23 +131,7 @@ public class Racquet : MonoBehaviour
             max_speed = max_speed_defending;
         }
     }
-    public void ResetControlZone()
-    {
-        czone_radius = 0;
-        control_zone.localScale = new Vector3(czone_radius, czone_radius, 1);
-        control_zone.gameObject.SetActive(true);
-        czone_audio.StopEffect();
-
-        controlled_ball = null;
-    }
-    public void DisableControlZone()
-    {
-        czone_radius = 0;
-        control_zone.gameObject.SetActive(false);
-        czone_audio.StopEffect();
-
-        controlled_ball = null;
-    }
+    
     public void Stun(float duration)
     {
         rigidbody2D.velocity = Vector2.zero;
@@ -207,6 +191,23 @@ public class Racquet : MonoBehaviour
         }
         
     }
+    public void EnableControlZone()
+    {
+        czone_radius = 0;
+        control_zone.localScale = new Vector3(czone_radius, czone_radius, 1);
+        control_zone.gameObject.SetActive(true);
+        czone_audio.StopEffect();
+
+        controlled_ball = null;
+    }
+    public void DisableControlZone()
+    {
+        czone_radius = 0;
+        control_zone.gameObject.SetActive(false);
+        czone_audio.StopEffect();
+
+        controlled_ball = null;
+    }
     public void SetInputUseFinesse(bool use_finesse)
     {
         this.input_finesse = use_finesse;
@@ -216,7 +217,7 @@ public class Racquet : MonoBehaviour
     {
         SetFinesseHeat(0);
         controlled_ball = null;
-        ResetControlZone();
+        DisableControlZone();
 
         max_speed = max_speed_attacking;
     }
@@ -341,6 +342,7 @@ public class Racquet : MonoBehaviour
         inside_sprite.transform.localScale = new Vector3(heat, heat, heat);
     }
 
+    
     private void UpdateControlZoneChangingSize()
     {
         if (ControllingBall())
@@ -382,7 +384,6 @@ public class Racquet : MonoBehaviour
     private void OnBallExitCZone()
     {
         controlled_ball = null;
-        //ResetControlZone();
         DisableControlZone();
     }
 
@@ -396,5 +397,9 @@ public class Racquet : MonoBehaviour
     public bool ControllingBall()
     {
         return controlled_ball != null;
+    }
+    public bool ControlZoneEnabled()
+    {
+        return control_zone.gameObject.activeInHierarchy;
     }
 }
