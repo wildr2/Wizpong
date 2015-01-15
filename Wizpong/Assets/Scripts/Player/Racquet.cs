@@ -229,7 +229,7 @@ public class Racquet : MonoBehaviour
         if (stunned) return;
 
         // slow down when no input to move
-        if (input_direction.magnitude <= 0.1f)
+        if (input_direction.magnitude <= 0f)
         {
             rigidbody2D.velocity = rigidbody2D.velocity / (1 + 5f * Time.deltaTime);
         }
@@ -348,7 +348,7 @@ public class Racquet : MonoBehaviour
             // shrink the control zone while controlling a ball
             if (czone_radius > 0)
             {
-                czone_radius -= Time.deltaTime * 2f;
+                czone_radius -= Time.deltaTime * 3f;
                 if (czone_radius < 0) czone_radius = 0;
             }
         }
@@ -357,7 +357,7 @@ public class Racquet : MonoBehaviour
             // expand the control zone while not controlling a ball
             if (czone_radius < normal_czone_radius)
             {
-                czone_radius += Time.deltaTime * 3f;
+                czone_radius += Time.deltaTime * 20f;
                 if (czone_radius > normal_czone_radius) czone_radius = normal_czone_radius;
             }
         }
@@ -382,7 +382,8 @@ public class Racquet : MonoBehaviour
     private void OnBallExitCZone()
     {
         controlled_ball = null;
-        ResetControlZone();
+        //ResetControlZone();
+        DisableControlZone();
     }
 
 

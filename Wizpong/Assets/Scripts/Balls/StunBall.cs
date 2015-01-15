@@ -15,8 +15,9 @@ public class StunBall : MonoBehaviour
     private Color color_uncontrolled;
 
     private Collider2D controlling_colider;
-    public string layer_name_racquet_czone;
-    private int layer_racquet_czone;
+    public string layer_name_active_stun_balls = "Active Stun Balls";
+    public string layer_name_balls = "Balls";
+    private int layer_active_stun_balls, layer_balls;
 
     
     
@@ -25,7 +26,8 @@ public class StunBall : MonoBehaviour
     public void Start()
     {
         color_uncontrolled = sprite_renderer.color;
-        layer_racquet_czone = LayerMask.NameToLayer(layer_name_racquet_czone);
+        layer_active_stun_balls = LayerMask.NameToLayer(layer_name_active_stun_balls);
+        layer_balls = LayerMask.NameToLayer(layer_name_balls);
 
         cam_shake = Camera.main.GetComponent<CameraShake>();
         if (!cam_shake) Debug.LogError("main camera has no CameraShake component");
@@ -69,10 +71,14 @@ public class StunBall : MonoBehaviour
             controlling_player = racquet.player_number;
             sprite_renderer.color = Color.Lerp(color_uncontrolled, racquet.player_color, 0.35f);
 
-            // insure the ball only collides with the opponent (physical racquet)
+            
+            // don't collide with controlling physical racquet
             controlling_colider = physical_collider;
-            Physics2D.IgnoreCollision(this.collider2D, controlling_colider);
-            Physics2D.IgnoreLayerCollision(gameObject.layer, layer_racquet_czone, true);
+            Physics2D.IgnoreCollision(this.collider2D, controlling_colider); 
+
+            // collide with opponent physical racquet
+            gameObject.layer = layer_active_stun_balls;
+
 
             StartCoroutine("ResetControllingPlayer");
 
@@ -95,9 +101,12 @@ public class StunBall : MonoBehaviour
         controlling_player = 0;
         sprite_renderer.color = color_uncontrolled;
 
-        // allow the ball to be controlled by racquets again
+
+        // let old controlling player physical racquet collide with this ball again (after it is controlled by someone else)
         Physics2D.IgnoreCollision(this.collider2D, controlling_colider, false);
-        Physics2D.IgnoreLayerCollision(gameObject.layer, layer_racquet_czone, false);
+
+        // don't collide with physical racquets
+        gameObject.layer = layer_balls;
     }
 	
 }

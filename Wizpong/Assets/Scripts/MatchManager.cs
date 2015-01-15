@@ -185,10 +185,10 @@ public class MatchManager : MonoBehaviour
             
 
         // shrink racquet
-        if (possession == 1)
-            racquet1.ResetControlZone();
-        else if (possession == 2)
-            racquet2.ResetControlZone();
+        //if (possession == 1)
+        //    racquet1.ResetControlZone();
+        //else if (possession == 2)
+        //    racquet2.ResetControlZone();
 
 
         // gameball lifetime reset

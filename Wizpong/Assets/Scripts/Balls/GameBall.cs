@@ -49,10 +49,6 @@ public class GameBall : MonoBehaviour
     }
     public void Update()
     {
-        // Drag
-        rigidbody2D.velocity /= (1 + 1.1f * Time.deltaTime);
-
-
         // Shrink
         if (shrinking)
         {
