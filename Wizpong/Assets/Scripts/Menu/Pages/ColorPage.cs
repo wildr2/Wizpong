@@ -18,7 +18,7 @@ public class ColorPage : UIMenuPage
 
     public void ButtonColor(int color_id)
     {
-        if (choosing_player_number < 1 || choosing_player_number > 1) Debug.LogWarning("player number should be 1 or 2");
+        if (choosing_player_number < 1 || choosing_player_number > 2) Debug.LogWarning("player number should be 1 or 2");
         GameSettings.Instance.player_color_ID[choosing_player_number - 1] = color_id;
 
         player_page.ResetColorPreviewAndButton(choosing_player_number,
