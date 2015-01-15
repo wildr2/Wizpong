@@ -8,7 +8,7 @@ using System.Collections.Generic;
 /// </summary>
 public class TimeScaleManager : MonoBehaviour 
 {
-    public float initial_time_scale = 1;
+    public static float initial_time_scale = 1;
 
     // time scale multipliers (id, multipliers on this layer (the top float is the used one))
     private static Dictionary<string, Stack<float>> multipliers = new Dictionary<string, Stack<float>>();
@@ -84,6 +84,17 @@ public class TimeScaleManager : MonoBehaviour
     public static void RemoveMultiplier(string id)
     {
         RemoveMultiplier(id, false);
+    }
+
+    /// <summary>
+    /// Remove all timescale multipliers but the original
+    /// </summary>
+    public static void Reset()
+    {
+        multipliers = new Dictionary<string, Stack<float>>();
+        current_time_scale = initial_time_scale;
+        Time.timeScale = current_time_scale;
+        AddMultiplier("original_time_scale", initial_time_scale, false);
     }
 
 

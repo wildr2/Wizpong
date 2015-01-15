@@ -35,6 +35,7 @@ public class InGameMenuPage : UIMenuPage
     private void Quit()
     {
         Application.LoadLevel("Main Menu");
+        TimeScaleManager.Reset();
     }
     private IEnumerator CheckForUnHideInput()
     {
