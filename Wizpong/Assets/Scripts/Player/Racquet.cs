@@ -74,6 +74,8 @@ public class Racquet : MonoBehaviour
         // get references
         cam_shake = Camera.main.GetComponent<CameraShake>();
         if (!cam_shake) Debug.LogError("main camera has no CameraShake component");
+
+        Reset();
     }
     public void Update()
     {
