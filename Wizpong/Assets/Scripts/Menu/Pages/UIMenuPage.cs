@@ -50,6 +50,8 @@ public class UIMenuPage : MonoBehaviour
             transform.SetAsLastSibling(); // make the topmost page (to disable interaction with lower pages)
             UpdateTransitioningObjectList();
 
+            OnStartTransitionIn();
+
             going_out = false;
             StopCoroutine("UpdateTransitionOut");
 
@@ -68,8 +70,8 @@ public class UIMenuPage : MonoBehaviour
             this.duration_seconds = duration_seconds;
             this.delay_seconds = delay_seconds;
 
-            UpdateTransitioningObjectList();
             transform.SetAsFirstSibling(); // make the bottommost page (to disable interaction with lower pages)
+            UpdateTransitioningObjectList();
 
             OnStartTransitionOut();
 
@@ -91,10 +93,10 @@ public class UIMenuPage : MonoBehaviour
     private void UpdateTransitioningObjectList()
     {
         transition_objects = GetComponentsInChildren<UITransition>().ToList<UITransition>();
-        UITransition tran = GetComponent<UITransition>();
-        if (tran != null)
+        UITransition[] trans = GetComponents<UITransition>();
+        if (trans.Length != 0)
         {
-            transition_objects.Add(tran);
+            transition_objects.AddRange(trans);
         }
     }
 
@@ -124,6 +126,11 @@ public class UIMenuPage : MonoBehaviour
             if (transition >= 1)
             {
                 going_in = false;
+
+                OnFinishTransitionIn();
+                foreach (UITransition obj in transition_objects)
+                    obj.OnFinishTransitionIn();
+
                 if (on_transitioned_in != null) on_transitioned_in();
                 break;
             }
@@ -149,15 +156,17 @@ public class UIMenuPage : MonoBehaviour
             transition = Mathf.Max(transition, 0);
 
             foreach (UITransition obj in transition_objects)
-            {
                 obj.UpdateTransition(transition, going_in);
-            }
 
             // transition finished
             if (transition <= 0)
             {
                 going_out = false;
+
                 OnFinishTransitionOut();
+                foreach (UITransition obj in transition_objects)
+                    obj.OnFinishTransitionOut();
+
                 gameObject.SetActive(false);
                 if (on_transitioned_out != null)
                 {
@@ -172,6 +181,8 @@ public class UIMenuPage : MonoBehaviour
 
     protected virtual void OnStartTransitionOut() { }
     protected virtual void OnFinishTransitionOut() { }
+    protected virtual void OnStartTransitionIn() { }
+    protected virtual void OnFinishTransitionIn() { }
 
 
     // PUBLIC ACCESSORS

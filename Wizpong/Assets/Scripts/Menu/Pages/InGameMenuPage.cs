@@ -26,7 +26,7 @@ public class InGameMenuPage : UIMenuPage
     }
     public void ButtonQuit()
     {
-        TransitionOut();
+        //TransitionOut();
         fadepage.TransitionIn();
         fadepage.on_transitioned_in = () => Quit();
     }

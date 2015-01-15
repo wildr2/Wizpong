@@ -5,7 +5,7 @@ public class ControlZoneAudio : MonoBehaviour
 {
     public AudioSource source;
     public float pitch_offset = 1;
-    public float base_max_volume = 0.1f;
+    public float base_max_volume = 0.5f;
     private float max_volume = 0.1f;
 
     private bool playing = false;
@@ -14,7 +14,8 @@ public class ControlZoneAudio : MonoBehaviour
 
     public void Update()
     {
-        max_volume = base_max_volume * GameSettings.Instance.volume_fx;
+        if (Time.timeScale == 0) max_volume = 0;
+        else max_volume = base_max_volume * GameSettings.Instance.volume_fx;
 
         if (playing)
         {
