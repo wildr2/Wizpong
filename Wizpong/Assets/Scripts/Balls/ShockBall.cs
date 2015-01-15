@@ -18,6 +18,10 @@ public class ShockBall : MonoBehaviour
     public void Start()
     {
         color_uncontrolled = sprite_renderer.color;
+
+        // BUG FIX - bug in which the collider will not move with the ball when the ball is parented to an empty gameobject...
+        collider2D.enabled = false;
+        collider2D.enabled = true;
     }
 
     public void OnCollisionEnter2D(Collision2D col)

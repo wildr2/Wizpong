@@ -29,6 +29,10 @@ public class StunBall : MonoBehaviour
 
         cam_shake = Camera.main.GetComponent<CameraShake>();
         if (!cam_shake) Debug.LogError("main camera has no CameraShake component");
+
+        // BUG FIX - bug in which the collider will not move with the ball when the ball is parented to an empty gameobject...
+        collider2D.enabled = false;
+        collider2D.enabled = true;
     }
 
     public void OnCollisionEnter2D(Collision2D col)

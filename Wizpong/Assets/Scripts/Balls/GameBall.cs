@@ -42,6 +42,10 @@ public class GameBall : MonoBehaviour
 
         // particle system
         particle_size_initial = particle_sys.startSize;
+
+        // BUG FIX - bug in which the collider will not move with the ball when the ball is parented to an empty gameobject...
+        collider2D.enabled = false;
+        collider2D.enabled = true;
     }
     public void Update()
     {
