@@ -14,7 +14,7 @@ public static class InputManager
     {
         input_device_mapping = new PlayerInputDevice[max_players];
         SetPlayerInputDevice(1, PlayerInputDevice.Keyboard);
-        SetPlayerInputDevice(2, PlayerInputDevice.Joystick1R);
+        SetPlayerInputDevice(2, PlayerInputDevice.Joystick1L);
     }
 
     public static void SetPlayerInputDevice(int player_number, PlayerInputDevice device)

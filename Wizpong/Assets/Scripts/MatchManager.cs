@@ -216,9 +216,8 @@ public class MatchManager : MonoBehaviour
             gameball.SetTrailColor(racquet2.player_color);
         }
 
-        // gameball lifetime reset
-        if (last_wall_possession != possession)
-            gameball.StartShrinking();
+        // gameball lifetime 
+        gameball.StartShrinking();
 
         // audio
         if (last_possession != 0)
@@ -284,10 +283,6 @@ public class MatchManager : MonoBehaviour
             score_p2 += 1;
             court_fx.FlashCourtColor(racquet2.player_color);
         }
-
-        // possession
-        possession = 0;
-        last_possession = 0;
 
         // score text
         ui.UpdateScoreUI(score_p1, score_p2);
