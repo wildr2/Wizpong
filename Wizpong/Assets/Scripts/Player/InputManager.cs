@@ -23,9 +23,13 @@ public static class InputManager
 
         input_device_mapping[player_number - 1] = (PlayerInputDevice)device;
     }
-    public static int NumberOfDevices()
+    public static int NumberOfDevicesAvailable()
     {
-        return 1 + Input.GetJoystickNames().Length;
+        return 1 + Input.GetJoystickNames().Length * 2;
+    }
+    public static PlayerInputDevice GetChosenInputDevice(int player_number)
+    {
+        return input_device_mapping[player_number - 1];
     }
 
     public static float Horizontal(int player_number)

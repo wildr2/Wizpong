@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class PlayerSetupPage : UIMenuPage 
@@ -9,6 +10,12 @@ public class PlayerSetupPage : UIMenuPage
     public InputField[] name_input;
     public Image[] racquet_previews;
 
+    public VerticalLayoutGroup input_device_column;
+    public Text input_device_text_prefab;
+    private Dictionary<PlayerInputDevice, Text> device_texts;
+
+
+    public UIMenuPage same_colors_pop_up, same_input_pop_up, begin_pop_up;
     public FadeScreenPage fadescreen_page;
 
 
@@ -34,6 +41,15 @@ public class PlayerSetupPage : UIMenuPage
     {
         GameSettings.Instance.player_name[player_number - 1] = name_input[player_number - 1].text;
     }
+    public void ButtonBegin()
+    {
+        if (GameSettings.Instance.PlayerSameColors())
+            same_colors_pop_up.TransitionIn();
+        else if (InputManager.GetChosenInputDevice(1) == InputManager.GetChosenInputDevice(2))
+            same_input_pop_up.TransitionIn();
+        else
+            begin_pop_up.TransitionIn();
+    }
     public void ButtonBeginYes()
     {
         fadescreen_page.TransitionIn();
@@ -42,11 +58,83 @@ public class PlayerSetupPage : UIMenuPage
         TransitionOut();
     }
 
-
     public void ResetColorPreviewAndButton(int player_number, Color color, string color_name)
     {
         racquet_previews[player_number - 1].color = color;
         bttn_color_text[player_number - 1].text = color_name;
+    }
+
+
+    protected override void OnStartTransitionIn()
+    {
+        StartCoroutine("UpdateInputDeviceChoice");
+        CreateInputDeviceList();
+
+        base.OnStartTransitionIn();
+    }
+    protected override void OnStartTransitionOut()
+    {
+        StopCoroutine("UpdateInputDeviceChoice");
+        base.OnStartTransitionOut();
+    }
+    protected override void OnFinishTransitionOut()
+    {
+        DestroyInputDeviceList();
+        base.OnFinishTransitionOut();
+    }
+
+    private void CreateInputDeviceList()
+    {
+        // create the input device choice list
+        device_texts = new Dictionary<PlayerInputDevice, Text>();
+        for (int i = 0; i < InputManager.NumberOfDevicesAvailable(); ++i)
+        {
+            Text text = (Text)Instantiate(input_device_text_prefab);
+            text.text = ((PlayerInputDevice)i).ToString();
+            text.transform.parent = input_device_column.transform;
+            device_texts.Add(((PlayerInputDevice)i), text);
+        }
+    }
+    private void DestroyInputDeviceList()
+    {
+        // delete the input device choice list
+        int n = input_device_column.transform.childCount;
+        for (int i = 0; i < n; ++i)
+        {
+            Destroy(input_device_column.transform.GetChild(i).gameObject);
+        }
+    }
+    private IEnumerator UpdateInputDeviceChoice()
+    {
+        while (true)
+        {
+
+            for (int i = 0; i < InputManager.NumberOfDevicesAvailable(); ++i)
+            {
+                PlayerInputDevice device = (PlayerInputDevice)i;
+                if (InputManager.HorizontalDevice(device) < 0)
+                {
+                    // set text
+                    device_texts[InputManager.GetChosenInputDevice(1)].text = InputManager.GetChosenInputDevice(1).ToString();
+                    device_texts[device].text = "< " + device.ToString();
+
+                    // set input device
+                    InputManager.SetPlayerInputDevice(1, device);
+                }
+                else if (InputManager.HorizontalDevice(device) > 0)
+                {
+                    // set text
+                    device_texts[InputManager.GetChosenInputDevice(2)].text = InputManager.GetChosenInputDevice(2).ToString();
+                    device_texts[device].text = device.ToString() + " >";
+
+                    // set input device
+                    InputManager.SetPlayerInputDevice(2, device);
+                }
+            }
+
+
+            yield return null;
+        }
     }
 
     private void ResetButtonControlType(int player_number, bool ai_controlled)
