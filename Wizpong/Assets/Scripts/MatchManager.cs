@@ -270,10 +270,6 @@ public class MatchManager : MonoBehaviour
         racquet1.Reset();
         racquet2.Reset();
 
-        // possession
-        possession = 0;
-        last_possession = 0;
-
         // walls
         StartCoroutine("ResetWallsAfterDelay");
 
@@ -288,6 +284,10 @@ public class MatchManager : MonoBehaviour
             score_p2 += 1;
             court_fx.FlashCourtColor(racquet2.player_color);
         }
+
+        // possession
+        possession = 0;
+        last_possession = 0;
 
         // score text
         ui.UpdateScoreUI(score_p1, score_p2);
