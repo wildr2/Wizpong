@@ -15,49 +15,7 @@ Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpo
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.071 seconds
+- Completed reload, in  0.065 seconds
 desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.dll (this message is harmless)
-UnloadTime: 3.455889 ms
-System memory in use before: 23.8 MB.
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 23.7 MB.
-
-Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 1136.
-Total: 1.773775 ms (FindLiveObjects: 0.088830 ms CreateObjectMapping: 0.022649 ms MarkObjects: 0.545368 ms  DeleteObjects: 0.088830 ms)
-
-UnloadTime: 4.842138 ms
-System memory in use before: 23.7 MB.
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 10.9 MB.
-
-Unloading 78 unused Assets to reduce memory usage. Loaded Objects now: 776.
-Total: 3.583649 ms (FindLiveObjects: 0.043176 ms CreateObjectMapping: 0.024065 ms MarkObjects: 0.770452 ms  DeleteObjects: 1.755726 ms)
-
-UnloadTime: 1.331393 ms
-System memory in use before: 23.8 MB.
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 23.8 MB.
-
-Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 1136.
-Total: 1.069149 ms (FindLiveObjects: 0.035744 ms CreateObjectMapping: 0.013448 ms MarkObjects: 0.381156 ms  DeleteObjects: 0.059102 ms)
-
-UnloadTime: 12.659562 ms
-System memory in use before: 23.7 MB.
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 10.9 MB.
-
-Unloading 70 unused Assets to reduce memory usage. Loaded Objects now: 776.
-Total: 3.708932 ms (FindLiveObjects: 0.060163 ms CreateObjectMapping: 0.028666 ms MarkObjects: 0.858575 ms  DeleteObjects: 1.715027 ms)
-
-UnloadTime: 3.025540 ms
-System memory in use before: 23.8 MB.
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 23.8 MB.
-
-Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 1136.
-Total: 3.818643 ms (FindLiveObjects: 0.162442 ms CreateObjectMapping: 0.054855 ms MarkObjects: 1.039775 ms  DeleteObjects: 0.148994 ms)
-

@@ -15,18 +15,18 @@ public class PlayerController : MonoBehaviour
 
 
         // move
-        racquet.SetMoveDirection(new Vector2(Input.GetAxisRaw("Horizontal" + pn),
-            Input.GetAxisRaw("Vertical" + pn)));
+        racquet.SetMoveDirection(new Vector2(InputManager.Horizontal(pn),
+            InputManager.Vertical(racquet.player_number)));
 
         // finesse
-        racquet.SetInputUseFinesse(Input.GetButton("Finesse" + pn));
+        racquet.SetInputUseFinesse(InputManager.ActionButton(pn));
 
         // control zone disabling
-        if (Input.GetButtonDown("Finesse" + pn)) racquet.EnableControlZone();
-        else if (!racquet.ControllingBall() && (Input.GetButtonUp("Finesse" + pn))) racquet.DisableControlZone();
+        if (InputManager.ActionButtonDown(pn)) racquet.EnableControlZone();
+        else if (!racquet.ControllingBall() && (InputManager.ActionButtonUp(pn))) racquet.DisableControlZone();
 
         // lightning
-        if (Input.GetButtonDown("Fire" + pn)) racquet.FireLightning();
+        //if (Input.GetButtonDown("Fire" + pn)) racquet.FireLightning();
     }
 	
 }
