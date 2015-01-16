@@ -43,10 +43,16 @@ public class PlayerSetupPage : UIMenuPage
     }
     public void ButtonBegin()
     {
+        // same colors (not including random)
         if (GameSettings.Instance.PlayerSameColors())
             same_colors_pop_up.TransitionIn();
-        else if (InputManager.GetChosenInputDevice(1) == InputManager.GetChosenInputDevice(2))
+
+        // same input in a human only match
+        else if (!(GameSettings.Instance.ai_controlled[0] || GameSettings.Instance.ai_controlled[1])
+            && InputManager.GetChosenInputDevice(1) == InputManager.GetChosenInputDevice(2))
             same_input_pop_up.TransitionIn();
+
+        // all set
         else
             begin_pop_up.TransitionIn();
     }
