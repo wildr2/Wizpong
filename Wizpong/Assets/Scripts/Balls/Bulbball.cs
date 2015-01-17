@@ -68,7 +68,7 @@ public class Bulbball : Ball
         base.TakeControl(racquet);
     }
 
-    private void RemoveControl()
+    private void ResetOwnership()
     {
         controlling_racquet = null;
         light_sprite.gameObject.SetActive(false);
@@ -95,12 +95,11 @@ public class Bulbball : Ball
 
                 current_stun_duration += stun_duration_increment;
                 current_countdown += countdown_increment;
-
-                RemoveControl();
-
-                controlling_racquet = null;
             }
         }
+
+        // reset ownership of ball
+        ResetOwnership();
     }
 	
 }
