@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public class Lightning : MonoBehaviour 
 {
     // Visual
-    private int max_redraws = 4;
+    private int redraws_per_stun_second = 2;
+    private int redraws;
     private int redraw_count = 0;
 
     private const int max_num_positions = 30;
@@ -47,9 +48,10 @@ public class Lightning : MonoBehaviour
         this.bolt_end = bolt_end;
 
         // visual
-        cam_shake.Shake(new CamShakeInstance(0.3f, 0.1f));
+        cam_shake.Shake(new CamShakeInstance(0.3f * stun_duration, 0.1f));
         line.enabled = true;
         redraw_count = 0;
+        redraws = (int)(redraws_per_stun_second * stun_duration);
         
         // audio
         shock_sound.Play();
@@ -64,14 +66,14 @@ public class Lightning : MonoBehaviour
 
     private IEnumerator ReCreateBolt()
     {
-        while (redraw_count < max_redraws)
+        while (redraw_count < redraws)
         {
             // redraw and collide
             ReDrawLine();
             HandleCollision();
 
             ++redraw_count;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.08f);
         }
 
         // finish bolt
