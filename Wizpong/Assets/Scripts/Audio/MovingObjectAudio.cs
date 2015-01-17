@@ -14,6 +14,7 @@ public class MovingObjectAudio : MonoBehaviour
     public void Awake()
     {
         audio.volume = 0;
+        audio.Play();
     }
     public void Update()
     {

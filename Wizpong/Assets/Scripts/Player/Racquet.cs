@@ -136,9 +136,6 @@ public class Racquet : MonoBehaviour
 
             StartCoroutine("UpdateStun");
         }
-
-        // audio
-        racquet_audio.PlayStunSound();
     }
     public void Stun()
     {
@@ -301,6 +298,9 @@ public class Racquet : MonoBehaviour
                 using_finesse = false;
                 TimeScaleManager.RemoveMultiplier("finesse", true);
                 Stun(finesse_overheat_stun_duration);
+
+                // audio
+                racquet_audio.PlaySelfStunSound();
             }
         }
 

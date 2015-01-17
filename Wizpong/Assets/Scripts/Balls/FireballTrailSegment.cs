@@ -20,8 +20,13 @@ public class FireballTrailSegment : MonoBehaviour
             // only stun racquets that are not currently controlling the fireball (have it in the control zone)
             if (r != null && !(parent.ControllingRacquet() != null && parent.ControllingRacquet().ControlledBall() == parent))
             {
-                // stun the racquet and move them away from the fire
+                // stun the racquet
                 r.Stun(0.2f);
+
+                // audio
+                parent.ball_audio.PlayStunSound();
+
+                // move the stunned racquet away from the fire (prevent chain stun)
                 Vector2 v = transform.position - r.transform.position;
                 r.transform.Translate(-v * 0.5f);
             }

@@ -4,7 +4,7 @@ using System.Collections;
 public class Fireball : Ball 
 {
     // Other references
-    public BallAudio ball_audio;
+    public FireballAudio ball_audio;
     public FireballTrailSegment trail_segment_prefab;
 
     private float distance_per_segment = 0.5f;
