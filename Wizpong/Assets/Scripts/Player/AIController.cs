@@ -10,7 +10,7 @@ public class AIController : MonoBehaviour
     public void Start()
     {
         StartCoroutine("UpdateInput");
-        racquet.event_collide_ball += new System.EventHandler<EventArgs<Rigidbody2D>>(OnRacquetVsBallCollision);
+        racquet.event_collide_ball += new System.EventHandler<EventArgs<Ball>>(OnRacquetVsBallCollision);
     }
     public void Instantiate(Racquet racquet, MatchManager match)
     {
@@ -29,11 +29,11 @@ public class AIController : MonoBehaviour
         }
     }
 
-    private void OnRacquetVsBallCollision(object sender, EventArgs<Rigidbody2D> e)
+    private void OnRacquetVsBallCollision(object sender, EventArgs<Ball> e)
     {
 
         // gameball collision
-        GameBall gb = e.Value.gameObject.GetComponent<GameBall>();
+        Gameball gb = e.Value.gameObject.GetComponent<Gameball>();
         if (gb != null)
         {
             // choose a new direction to push the ball in

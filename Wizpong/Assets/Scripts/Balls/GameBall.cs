@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 
-public class GameBall : MonoBehaviour
+public class Gameball : Ball
 {
     // References
     public SpriteRenderer ball_renderer;
@@ -32,7 +32,7 @@ public class GameBall : MonoBehaviour
 
     // PUBLIC MODIFIERS
 
-    public void Start()
+    new public void Start()
     {   
         life_time = life_time_initial;
 
@@ -43,9 +43,7 @@ public class GameBall : MonoBehaviour
         // particle system
         particle_size_initial = particle_sys.startSize;
 
-        // BUG FIX - bug in which the collider will not move with the ball when the ball is parented to an empty gameobject...
-        collider2D.enabled = false;
-        collider2D.enabled = true;
+        base.Start();
     }
     public void Update()
     {
@@ -74,7 +72,6 @@ public class GameBall : MonoBehaviour
             
             // audio
             ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
-            //SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
 
             // fire event
             if (event_collide_wall != null) event_collide_wall(this, new EventArgs<Wall>(wall));
@@ -87,12 +84,12 @@ public class GameBall : MonoBehaviour
         {
             // audio
             ball_audio.PlayBumpSound(rigidbody2D.velocity.magnitude / 100f);
-            //SoundManager.PlayGameBallBump(transform.position, rigidbody2D.velocity.magnitude / 100f);
         }
        
     }
-    public void RacquetTouch()
+    public override void TakeControl(Racquet racquet)
     {
+        base.TakeControl(racquet);
         hit_wall_since_racquet = false;
     }
 

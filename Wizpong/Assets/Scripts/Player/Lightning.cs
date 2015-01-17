@@ -14,12 +14,12 @@ public class Lightning : MonoBehaviour
     public LineRenderer line;
 
     private Transform bolt_start, bolt_end;
-    private float fixed_distance = 0;
     private Vector2 direction;
 
     // stun
-    private const float stun_duration = 0.75f;
-    private int power = 1; // stun_duration is multiplied by power
+    //private const float stun_duration = 0.75f;
+    //private int power = 1; // stun_duration is multiplied by power
+    private float stun_duration;
 
     // audio
     public WorldSound shock_sound;
@@ -41,7 +41,7 @@ public class Lightning : MonoBehaviour
         cam_shake = Camera.main.GetComponent<CameraShake>();
         if (!cam_shake) Debug.LogError("no CameraShake found");
     }
-    public void Fire(Transform bolt_start, Transform bolt_end, int power)
+    public void Fire(Transform bolt_start, Transform bolt_end, float stun_duration)
     {
         this.bolt_start = bolt_start;
         this.bolt_end = bolt_end;
@@ -52,19 +52,11 @@ public class Lightning : MonoBehaviour
         redraw_count = 0;
         
         // audio
-        //SoundManager.PlayShock();
         shock_sound.Play();
 
         // draw and collision (stun players)
-        this.power = power;
+        this.stun_duration = stun_duration;
         StartCoroutine(ReCreateBolt());
-    }
-    public void Fire(Transform bolt_start, Transform bolt_end, float fixed_distance, int power)
-    {
-        this.fixed_distance = fixed_distance;
-        direction = (bolt_end.position - bolt_start.position).normalized;
-
-        Fire(bolt_start, bolt_end, power);
     }
 
 
@@ -90,11 +82,6 @@ public class Lightning : MonoBehaviour
     {
         Vector2 pos1 = bolt_start.position;
         Vector2 pos2 = bolt_end.position;
-        if (fixed_distance > 0)
-        {
-            direction = (bolt_end.position - bolt_start.position).normalized;
-            pos2 = pos1 + direction * fixed_distance;
-        }
 
         float dist = (pos2 - pos1).magnitude;
         int num_positions = (int)(max_num_positions *  Mathf.Min(dist / 20f, 1));
@@ -116,10 +103,6 @@ public class Lightning : MonoBehaviour
     {
         Vector2 pos1 = bolt_start.position;
         Vector2 pos2 = bolt_end.position;
-        if (fixed_distance > 0)
-        {
-            pos2 = pos1 + direction * fixed_distance;
-        }
 
         // see if the player is hit (and hit them)
         RaycastHit2D[] hits = Physics2D.LinecastAll(pos1, pos2, racquets_layer.value);
@@ -130,7 +113,7 @@ public class Lightning : MonoBehaviour
             Racquet r = hit.collider.GetComponent<Racquet>();
             if (r != null && r.player_number != racquet.player_number) // affect only the opponent
             {
-                r.Stun(stun_duration * power);
+                r.Stun(stun_duration);
             }
         }
     }

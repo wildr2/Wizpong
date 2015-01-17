@@ -26,7 +26,7 @@ public class Racquet : MonoBehaviour
     private float finesse_heat = 0; // 0 to 1, 1 is overheated, increases as finesse is used
 
     // Ball control
-    private Rigidbody2D controlled_ball = null;
+    private Ball controlled_ball = null;
     private const float max_czone_radius = 8f;
     private const float normal_czone_radius= 1.5f;
     private float czone_radius = 1.5f;
@@ -41,6 +41,10 @@ public class Racquet : MonoBehaviour
     private float stun_duration;
     private const float default_stun_duration = 1f;
     private const float finesse_overheat_stun_duration = 2f;
+
+    // Slow
+    private bool slowed = false;
+    private float slow_factor = 1;
     
     // Lightning ability
     public Lightning lightning_prefab;
@@ -51,7 +55,7 @@ public class Racquet : MonoBehaviour
     private bool input_finesse = false;
 
     // Events
-    public event EventHandler<EventArgs<Rigidbody2D>> event_collide_ball;
+    public event EventHandler<EventArgs<Ball>> event_collide_ball;
     public event EventHandler<EventArgs<float>> event_stunned;
 
 
@@ -88,37 +92,14 @@ public class Racquet : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collider)
     {
         // VS Ball
-        if (controlled_ball == null && collider.CompareTag("Ball") && collider.rigidbody2D != null)
+        Ball ball = collider.GetComponent<Ball>();
+
+        if (controlled_ball == null && ball != null && collider.rigidbody2D != null)
         {
-            controlled_ball = collider.rigidbody2D;
+            controlled_ball = ball;
             OnBallEnterCZone();
-
-            // VS Gameball
-            GameBall gameball = controlled_ball.GetComponent<GameBall>();
-            if (gameball != null)
-            {
-                gameball.RacquetTouch();
-            }
-            else
-            {
-                // VS Stunball
-                StunBall stunball = controlled_ball.GetComponent<StunBall>();
-                if (stunball != null)
-                {
-                    stunball.TryTakeControlOfBall(this, collider2D);
-                }
-                else
-                {
-                    // VS Shockball
-                    ShockBall shockball = controlled_ball.GetComponent<ShockBall>();
-                    if (shockball != null)
-                    {
-                        shockball.TakeControlOfBall(this);
-                    }
-                }
-            }
-
-            event_collide_ball(this, new EventArgs<Rigidbody2D>(controlled_ball));
+            ball.TakeControl(this);
+            event_collide_ball(this, new EventArgs<Ball>(ball));
         }
     }
 
@@ -162,6 +143,11 @@ public class Racquet : MonoBehaviour
     public void Stun()
     {
         Stun(default_stun_duration);
+    }
+    public void Slow(float factor)
+    {
+        slow_factor = factor;
+        slowed = true;
     }
 
     // racquet control
@@ -238,10 +224,11 @@ public class Racquet : MonoBehaviour
         }
         else
         {
-            rigidbody2D.AddForce(input_direction * 20000f * Time.deltaTime);
+            rigidbody2D.AddForce(input_direction * 20000f * (slowed ? slow_factor : 1) * Time.deltaTime);
             rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, max_speed);
         }
 
+        slowed = false;
 
         // restrict movement to court
         if (Mathf.Abs(transform.position.x) > bounds_width / 2f)
@@ -403,5 +390,13 @@ public class Racquet : MonoBehaviour
     public bool ControlZoneEnabled()
     {
         return control_zone.gameObject.activeInHierarchy;
+    }
+    public Collider2D PhysicalCollider()
+    {
+        return collider2D;
+    }
+    public Ball ControlledBall()
+    {
+        return controlled_ball;
     }
 }

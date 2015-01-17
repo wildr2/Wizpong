@@ -15,6 +15,7 @@ public class BallAudio : MonoBehaviour
 
     public void PlayBumpSound(float force)
     {
+        if (bump_sound_prefab == null) return;
         WorldSound s = ObjectPool.Instance.GetObject(bump_sound_prefab, false);
 
         s.transform.position = transform.position;
@@ -24,6 +25,7 @@ public class BallAudio : MonoBehaviour
     }
     public void PlayPossessSound()
     {
+        if (possess_sound_prefab == null) return;
         WorldSound s = ObjectPool.Instance.GetObject(possess_sound_prefab, false);
 
         s.transform.position = transform.position;

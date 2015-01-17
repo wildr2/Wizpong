@@ -7,7 +7,7 @@ public class MatchManager : MonoBehaviour
 {
     // Other References
     public Racquet racquet1, racquet2;
-    public GameBall gameball;
+    public Gameball gameball;
     public CourtUI ui;
     public CourtEffects court_fx;
     private CameraShake cam_shake;
@@ -44,8 +44,8 @@ public class MatchManager : MonoBehaviour
     public void Start()
     {
         // hook up to match events
-        racquet1.event_collide_ball += new System.EventHandler<EventArgs<Rigidbody2D>>(OnRacquetVsBall);
-        racquet2.event_collide_ball += new System.EventHandler<EventArgs<Rigidbody2D>>(OnRacquetVsBall);
+        racquet1.event_collide_ball += new System.EventHandler<EventArgs<Ball>>(OnRacquetVsBall);
+        racquet2.event_collide_ball += new System.EventHandler<EventArgs<Ball>>(OnRacquetVsBall);
 
         racquet1.event_stunned += new EventHandler<EventArgs<float>>(OnRacquetStunned);
         racquet2.event_stunned += new EventHandler<EventArgs<float>>(OnRacquetStunned); 
@@ -120,7 +120,7 @@ public class MatchManager : MonoBehaviour
         }
     }
 
-    private void OnRacquetVsBall(object sender, EventArgs<Rigidbody2D> e)
+    private void OnRacquetVsBall(object sender, EventArgs<Ball> e)
     {
         if (point_over) return;
 
@@ -128,7 +128,7 @@ public class MatchManager : MonoBehaviour
         if (r == null) return;
 
         // vs gameball
-        GameBall gb = e.Value.gameObject.GetComponent<GameBall>();
+        Gameball gb = e.Value.gameObject.GetComponent<Gameball>();
         if (gb != null)
         {
             if (possession != r.player_number)
