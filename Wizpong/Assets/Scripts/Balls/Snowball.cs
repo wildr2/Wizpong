@@ -17,6 +17,11 @@ public class Snowball : Ball
 
         base.Start();
     }
+    public void Update()
+    {
+        // glide slowly back to the center
+        rigidbody2D.AddForce((Vector2.zero - (Vector2)transform.position) * 0.3f * Time.deltaTime);
+    }
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (col.collider.CompareTag("Wall"))

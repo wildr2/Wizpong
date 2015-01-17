@@ -15,7 +15,7 @@ Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpo
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.111 seconds
+- Completed reload, in  0.092 seconds
 desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -90,23 +90,11 @@ UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc63851
  
 (Filename: C Line: 0)
 
-UnloadTime: 2.743817 ms
+UnloadTime: 3.036850 ms
 System memory in use before: 32.9 MB.
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 System memory in use after: 32.8 MB.
 
 Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 1250.
-Total: 1.224861 ms (FindLiveObjects: 0.064764 ms CreateObjectMapping: 0.018403 ms MarkObjects: 0.413005 ms  DeleteObjects: 0.066180 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Lightning.Initialize (.Racquet racquet) [0x00007] in C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Player\Lightning.cs:40 
-  at Bulbball+<ShockCountDown>c__Iterator1.MoveNext () [0x000fa] in C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Balls\Bulbball.cs:93 
- 
-(Filename: C Line: 0)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Lightning.HandleCollision () [0x0005d] in C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Player\Lightning.cs:116 
-  at Lightning+<ReCreateBolt>c__Iterator11.MoveNext () [0x00031] in C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Player\Lightning.cs:73 
- 
-(Filename: C Line: 0)
+Total: 1.189825 ms (FindLiveObjects: 0.049192 ms CreateObjectMapping: 0.016279 ms MarkObjects: 0.404158 ms  DeleteObjects: 0.066180 ms)
 
