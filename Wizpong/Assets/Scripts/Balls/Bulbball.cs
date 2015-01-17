@@ -52,7 +52,7 @@ public class Bulbball : Ball
 
         Color c = Color.Lerp(racquet.player_color, Color.white, 0.25f);
         c.a = 0.2f;
-        timer_ring.color = c;
+        //timer_ring.color = c;
         timer_ring.gameObject.SetActive(true);
 
 
