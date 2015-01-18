@@ -48,7 +48,7 @@ public class Snowball : Ball
         }
         else if (collider.CompareTag("Ball"))
         {
-            collider.rigidbody2D.velocity *= 0.8f;
+            collider.rigidbody2D.velocity *= 0.2f;
         }
     }
 

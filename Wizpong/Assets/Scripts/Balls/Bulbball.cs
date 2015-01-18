@@ -10,22 +10,18 @@ public class Bulbball : Ball
 
     private const float max_ring_radius = 3;
 
-    private const float base_countdown = 1;
-    private float current_countdown;
-    private const float countdown_increment = 2;
-    private const float base_stun_duration = 0.5f;
-    private float current_stun_duration;
-    private const float stun_duration_increment = 0.5f;
-
-    private float countdown_timer;
+    private const float countdown_max = 8;
+    private float countdown;
+    private bool counting_down = false;
+    private const float stun_duration = 3;
 
     public Racquet[] racquets;
 
 
     public override void Initialize()
     {
-        current_countdown = base_countdown;
-        current_stun_duration = base_stun_duration;
+        countdown = countdown_max;
+        counting_down = false;
         base.Initialize();
     }
     public void OnCollisionEnter2D(Collision2D col)
@@ -57,11 +53,10 @@ public class Bulbball : Ball
 
 
         // countdown
-        countdown_timer = current_countdown;
-
-        if (controlling_racquet != racquet)
+        if (!counting_down)
         {
-            StopCoroutine("ShockCountDown");
+            counting_down = true;
+            countdown = countdown_max;
             StartCoroutine("ShockCountDown");
         }
 
@@ -78,10 +73,10 @@ public class Bulbball : Ball
     {
         while (true)
         {
-            countdown_timer -= Time.deltaTime;
-            if (countdown_timer <= 0) break;
+            countdown -= Time.deltaTime;
+            if (countdown <= 0) break;
 
-            timer_ring.transform.localScale = new Vector3(max_ring_radius, max_ring_radius, max_ring_radius) * (countdown_timer / current_countdown); 
+            timer_ring.transform.localScale = new Vector3(max_ring_radius, max_ring_radius, max_ring_radius) * (countdown / countdown_max); 
 
             yield return null;
         }
@@ -91,12 +86,12 @@ public class Bulbball : Ball
             if (r != controlling_racquet)
             {
                 lightning.Initialize(controlling_racquet);
-                lightning.Fire(transform, r.transform, current_stun_duration);
-
-                current_stun_duration += stun_duration_increment;
-                current_countdown += countdown_increment;
+                lightning.Fire(transform, r.transform, stun_duration);
             }
         }
+
+
+        counting_down = false;
 
         // reset ownership of ball
         ResetOwnership();

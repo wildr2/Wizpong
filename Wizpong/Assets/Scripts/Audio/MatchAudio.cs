@@ -4,7 +4,7 @@ using System.Collections;
 public class MatchAudio : MonoBehaviour
 {
     public AudioSource source_rewall;
-    public AudioSource source_begin_point;
+    public AudioSource source_spawn_ball;
     public AudioSource source_point;
     public AudioSource source_bells;
     public AudioSource source_game_over;
@@ -31,10 +31,10 @@ public class MatchAudio : MonoBehaviour
         source_rewall.volume = GameSettings.Instance.volume_fx;
         source_rewall.Play();
     }
-    public void PlayBeginPoint()
+    public void PlaySpawnBall()
     {
-        source_begin_point.volume = GameSettings.Instance.volume_fx;
-        source_begin_point.Play();
+        source_spawn_ball.volume = GameSettings.Instance.volume_fx;
+        source_spawn_ball.Play();
     }
     public void PlayPoint()
     {

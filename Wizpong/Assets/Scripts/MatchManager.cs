@@ -28,6 +28,7 @@ public class MatchManager : MonoBehaviour
     private const float seconds_to_first_point = 5;
     private float seconds_to_next_point; 
 
+
     // stats
     private int score_p1 = 0, score_p2 = 0;
     private int rewalls_p1 = 0, rewalls_p2 = 0;
@@ -367,7 +368,7 @@ public class MatchManager : MonoBehaviour
         last_possession = 0;
 
         // audio
-        match_audio.PlayBeginPoint();
+        match_audio.PlaySpawnBall();
 
         // reset time scale
         TimeScaleManager.RemoveMultiplier("match_event");
