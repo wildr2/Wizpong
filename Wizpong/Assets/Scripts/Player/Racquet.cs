@@ -99,7 +99,7 @@ public class Racquet : MonoBehaviour
             controlled_ball = ball;
             OnBallEnterCZone();
             ball.TakeControl(this);
-            event_collide_ball(this, new EventArgs<Ball>(ball));
+            if (event_collide_ball != null) event_collide_ball(this, new EventArgs<Ball>(ball));
         }
     }
 

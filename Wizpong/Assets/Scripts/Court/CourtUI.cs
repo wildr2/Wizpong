@@ -33,7 +33,7 @@ public class CourtUI : MonoBehaviour
 
     public void UpdateMatchClock(float time)
     {
-        match_clock.text = FormatMinSecTimer(time);
+        if (match_clock != null) match_clock.text = FormatMinSecTimer(time);
     }
     public void UpdatePossessionClock(float time)
     {
