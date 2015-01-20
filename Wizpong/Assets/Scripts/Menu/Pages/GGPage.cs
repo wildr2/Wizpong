@@ -8,12 +8,10 @@ public class GGPage : InGameMenuPage
     public Text heading;
 
 
-    new public void Start()
+    public void Awake()
     {
         match = Object.FindObjectOfType<MatchManager>();
         if (match == null) Debug.LogError("MatchManager missing.");
-
-        base.Start();
     }
     public void OnEnable()
     {
