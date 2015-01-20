@@ -1,0 +1,434 @@
+Initialize engine version: 4.6.0f1 (8b19a19f0c27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.3302]
+    Renderer: NVIDIA NVS 5200M
+    Vendor:   NVIDIA
+    VRAM:     971 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.050 seconds
+desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Builds\Build_Data\Managed\System.dll (this message is harmless)
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+UnloadTime: 7.249015 ms
+System memory in use before: 32.9 MB.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 32.8 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 922.
+Total: 2.054412 ms (FindLiveObjects: 0.121742 ms CreateObjectMapping: 0.039991 ms MarkObjects: 0.491926 ms  DeleteObjects: 0.096969 ms)
+
+UnloadTime: 3.983543 ms
+System memory in use before: 33.2 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 33.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 1175.
+Total: 2.860959 ms (FindLiveObjects: 0.110771 ms CreateObjectMapping: 0.043884 ms MarkObjects: 0.961911 ms  DeleteObjects: 0.098031 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GGPage.OnEnable () [0x0000a] in C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\GGPage.cs:22 
+UnityEngine.GameObject:SetActive(Boolean)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:49)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+<OpenGGPageAfterDelay>c__IteratorB:MoveNext() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\MatchManager.cs:454)
+ 
+(Filename: C Line: 0)
+
+UnloadTime: 8.892900 ms
+System memory in use before: 33.3 MB.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 11.4 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 930.
+Total: 9.095331 ms (FindLiveObjects: 0.111479 ms CreateObjectMapping: 0.040698 ms MarkObjects: 1.432249 ms  DeleteObjects: 5.302543 ms)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+ColorPage:BackToSetupPage() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:36)
+ColorPage:ButtonColor(Int32) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:27)
+<CreateColorGrid>c__AnonStorey15:<>m__1() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:60)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:578)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+ColorPage:BackToSetupPage() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:36)
+ColorPage:ButtonColor(Int32) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:27)
+<CreateColorGrid>c__AnonStorey15:<>m__1() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:60)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:578)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+PlayerSetupPage:CreateInputDeviceList() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:120)
+PlayerSetupPage:OnStartTransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\PlayerSetupPage.cs:97)
+UIMenuPage:TransitionIn(Single, Single) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:53)
+UIMenuPage:TransitionIn() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\UIMenuPage.cs:64)
+ColorPage:BackToSetupPage() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:36)
+ColorPage:ButtonColor(Int32) (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:27)
+<CreateColorGrid>c__AnonStorey15:<>m__1() (at C:\Users\Robert Wild\Keep\___Personal\_Game Development\Wizpong\Wizpong\Assets\Scripts\Menu\Pages\ColorPage.cs:60)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:578)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+UnloadTime: 3.519575 ms
+System memory in use before: 33.4 MB.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 33.3 MB.
+
+Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 933.
+Total: 2.767175 ms (FindLiveObjects: 0.077504 ms CreateObjectMapping: 0.037867 ms MarkObjects: 0.792391 ms  DeleteObjects: 0.153594 ms)
+
+UnloadTime: 3.818270 ms
+System memory in use before: 33.5 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 33.6 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1186.
+Total: 3.362088 ms (FindLiveObjects: 0.101570 ms CreateObjectMapping: 0.046715 ms MarkObjects: 1.019951 ms  DeleteObjects: 0.108294 ms)
+
+UnloadTime: 8.882990 ms
+System memory in use before: 33.2 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 11.4 MB.
+
+Unloading 108 unused Assets to reduce memory usage. Loaded Objects now: 930.
+Total: 8.201371 ms (FindLiveObjects: 0.093430 ms CreateObjectMapping: 0.044238 ms MarkObjects: 1.317230 ms  DeleteObjects: 4.813094 ms)
+
