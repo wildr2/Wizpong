@@ -28,7 +28,7 @@ public class GameSettings : MonoBehaviour
     }
 
     // Audio volumes
-    public float volume_fx = 1, volume_music = 1;
+    public float volume_fx = 1, volume_music = 0.1f;
 
     // Player info
     public bool[] ai_controlled = { false, false };
