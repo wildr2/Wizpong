@@ -234,7 +234,7 @@ public class MatchManager : MonoBehaviour
             else e.Value.SetColorTouched();
 
         }
-        else
+        else if (e.Value != live_wall)
         {
             // show that this wall was touched
             e.Value.SetColorTouched();
