@@ -16,12 +16,6 @@ public class Help4Page : UIMenuPage
     }
     public void ButtonBeginMatch()
     {
-        // match settings
-        GameSettings.Instance.match_type = 0; // normal length match
-        GameSettings.Instance.ai_controlled[1] = true; // against ai
-        GameSettings.Instance.player_color_ID[1] = 0; // random color
-
-
         fade_page.TransitionIn();
         fade_page.on_transitioned_in = () => Application.LoadLevel("Game");
     }

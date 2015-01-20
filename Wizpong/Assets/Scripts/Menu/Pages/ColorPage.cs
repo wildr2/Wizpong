@@ -24,14 +24,17 @@ public class ColorPage : UIMenuPage
         player_page.ResetColorPreviewAndButton(choosing_player_number,
             GameSettings.Instance.player_colors[color_id], GameSettings.Instance.player_color_names[color_id]);
 
-        TransitionOut();
-        if (player_page != null) player_page.TransitionIn();
+        BackToSetupPage();
     }
     public void SetChoosingPlayerNumber(int number)
     {
         choosing_player_number = number;
     }
-    
+    public void BackToSetupPage()
+    {
+        TransitionOut();
+        if (player_page != null) player_page.TransitionIn();
+    }
 
     
     private void CreateColorGrid()

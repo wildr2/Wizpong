@@ -9,6 +9,7 @@ public class PlayerSetupPage : UIMenuPage
     public Text[] bttn_color_text;
     public InputField[] name_input;
     public Image[] racquet_previews;
+    public ColorPage color_page;
 
     public VerticalLayoutGroup input_device_column;
     public Text input_device_text_prefab;
@@ -21,7 +22,7 @@ public class PlayerSetupPage : UIMenuPage
 
     new public void Start()
     {
-        for (int pn = 1; pn < 3; ++pn)
+        for (int pn = 1; pn < name_input.Length; ++pn)
         {
             ResetButtonControlType(pn, GameSettings.Instance.ai_controlled[pn - 1]);
             ResetInputFieldPlayerName(pn, GameSettings.Instance.player_name[pn - 1]);
@@ -36,6 +37,13 @@ public class PlayerSetupPage : UIMenuPage
     {
         GameSettings.Instance.ai_controlled[player_number - 1] = ! GameSettings.Instance.ai_controlled[player_number - 1];
         ResetButtonControlType(player_number, GameSettings.Instance.ai_controlled[player_number - 1]);
+    }
+    public void ButtonChangeColor(int player_number)
+    {
+        TransitionOut();
+        color_page.SetChoosingPlayerNumber(player_number);
+        color_page.player_page = this;
+        color_page.TransitionIn();
     }
     public void InputFieldEnterPlayerName(int player_number)
     {
@@ -60,6 +68,18 @@ public class PlayerSetupPage : UIMenuPage
     {
         fadescreen_page.TransitionIn();
         fadescreen_page.on_transitioned_in = () => Application.LoadLevel("Game");
+
+        TransitionOut();
+    }
+    public void ButtonBeginTutorial()
+    {
+        // settings
+        GameSettings.Instance.ai_controlled[1] = true;
+        GameSettings.Instance.ai_controlled[0] = false;
+        GameSettings.Instance.player_color_ID[1] = 0; // random color
+
+        fadescreen_page.TransitionIn();
+        fadescreen_page.on_transitioned_in = () => Application.LoadLevel("Tutorial");
 
         TransitionOut();
     }
