@@ -7,6 +7,8 @@ public class MatchBallSpawner : MonoBehaviour
     public MatchAudio match_audio;
     private int spawn_index = 0;
 
+    public bool spawn_over_time_enabled = true;
+
     private float spawn_interval;
     private float[] match_type_spawn_intervals = new float[]
     { 
@@ -18,12 +20,17 @@ public class MatchBallSpawner : MonoBehaviour
 
     public void Start()
     {
-        spawn_interval = match_type_spawn_intervals[GameSettings.Instance.match_type];
-        SpawnNext();
+        if (spawn_over_time_enabled)
+        {
+            spawn_interval = match_type_spawn_intervals[GameSettings.Instance.match_type];
+            SpawnNext();
+        } 
     }
 
     public void SpawnNext()
     {
+        if (spawn_index >= spawn_queue.Length) return;
+
         // spawn
         spawn_queue[spawn_index].Initialize();
         spawn_queue[spawn_index].gameObject.SetActive(true);
@@ -37,7 +44,24 @@ public class MatchBallSpawner : MonoBehaviour
         if (spawn_index >= spawn_queue.Length) return;
         StartCoroutine("SpawnNextAfterWait");
     }
-    public IEnumerator SpawnNextAfterWait()
+    public void SpawnAll()
+    {
+        while (spawn_index < spawn_queue.Length - 1)
+        {
+            SpawnNext();
+        }
+    }
+    public void DespawnAll()
+    {
+        foreach (Ball ball in spawn_queue)
+        {
+            ball.gameObject.SetActive(false);
+        }
+
+        spawn_index = 0;
+    }
+
+    private IEnumerator SpawnNextAfterWait()
     {
         yield return new WaitForSeconds(spawn_interval);
 

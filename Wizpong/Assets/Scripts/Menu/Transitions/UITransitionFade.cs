@@ -2,21 +2,27 @@
 using System.Collections;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
+[RequireComponent(typeof(CanvasRenderer))]
 public class UITransitionFade : UITransition
 {
-    private Image image;
+    private CanvasRenderer canvas_r;
+    private CanvasGroup canvas_group;
     private float alpha_initial;
     public float offset = 0;
+    public float power = 4;
+
 
     public void Awake()
     {
-        image = GetComponent<Image>();
-        alpha_initial = image.color.a;
+        canvas_r = GetComponent<CanvasRenderer>();
+        canvas_group = GetComponent<CanvasGroup>();
+
+        if (canvas_group != null) alpha_initial = canvas_group.alpha;
+        else alpha_initial = canvas_r.GetAlpha();
     }
     public override void UpdateTransition(float transition, bool going_in)
     {
-        float t = 1 - Mathf.Pow(1 - transition, 4);
+        float t = 1 - Mathf.Pow(1 - transition, power);
 
         // offset
         if (going_in)
@@ -29,9 +35,8 @@ public class UITransitionFade : UITransition
         }
 
         // set alpha
-        Color c = image.color;
-        c.a = alpha_initial * t;
-        image.color = c;
+        if (canvas_group != null) canvas_group.alpha = alpha_initial * t;
+        else canvas_r.SetAlpha(alpha_initial * t);
     }
 
 }

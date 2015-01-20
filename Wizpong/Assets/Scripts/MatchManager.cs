@@ -13,7 +13,7 @@ public class MatchManager : MonoBehaviour
     private CameraShake cam_shake;
     public GGPage gg_page;
     public MatchAudio match_audio;
-    
+
     // Current point information
     private int last_possession = 0, possession = 0; // 0 is nobody, 1 is player 1...
     private Wall live_wall = null;
@@ -28,16 +28,21 @@ public class MatchManager : MonoBehaviour
     private const float seconds_to_first_point = 5;
     private float seconds_to_next_point; 
 
-
-    // stats
+    // Stats
     private int score_p1 = 0, score_p2 = 0;
     private int rewalls_p1 = 0, rewalls_p2 = 0;
     private float time_stunned_p1 = 0, time_stunned_p2 = 0;
     private float possession_time_p1 = 0, possession_time_p2 = 0;
 
-    // Other
+    // Match states
     private bool point_over = false;
     private bool game_over = false;
+
+    // Options
+    private bool match_clock_enabled = true;
+    private bool rewalling_enabled = true;
+    private bool scoring_enabled = true;
+    private bool interpoint_wait_enabled = true;
 
 
     // PUBLIC MODIFIERS
@@ -66,6 +71,56 @@ public class MatchManager : MonoBehaviour
     {
         UpdateClocks();
         UpdatePossessionTimeStats();
+    }
+    
+    public void BeginMatch()
+    {
+        // match state
+        point_over = true;
+        game_over = false;
+        possession = 0;
+
+        ResetStats();
+
+        // match clock
+        match_length_seconds = (GameSettings.Instance.match_type == 0 ? 5 :
+                                GameSettings.Instance.match_type == 1 ? 10 : 1) * 60;
+        match_seconds_left = match_length_seconds;
+
+        // inter point clock
+        seconds_to_next_point = interpoint_wait_enabled ? seconds_to_first_point : 0;
+
+        // walls
+        ResetWalls(); 
+
+        // balls
+        gameball.Hide();
+
+
+        StartCoroutine("BeginNextPointAfterDelay");
+    }
+
+    public void SetMatchClockEnabled(bool enabled)
+    {
+        if (!enabled)
+        {
+            match_seconds_left = 0;
+            ui.UpdateMatchClock(0);
+        }
+        
+        match_clock_enabled = enabled;
+    }
+    public void SetRewallingEnabled(bool enabled)
+    {
+        rewalling_enabled = enabled;
+    }
+    public void SetScoringEnabled(bool enabled)
+    {
+        scoring_enabled = enabled;
+    }
+    public void SetInterPointWaitEnabled(bool enabled)
+    {
+        interpoint_wait_enabled = enabled;
     }
 
 
@@ -97,7 +152,7 @@ public class MatchManager : MonoBehaviour
             ui.UpdateInterPointClock(seconds_to_next_point);
         }
 
-        if (!game_over)
+        if (!game_over && match_clock_enabled)
         {
             // match clock (uneffected by timescale except when paused)
             if (Time.timeScale != 0) match_seconds_left -= Time.unscaledDeltaTime;
@@ -171,8 +226,13 @@ public class MatchManager : MonoBehaviour
         // if first wall bounce since racquet touch
         if (!gameball.HitWallSinceRacquetTouch())
         {
-            // make wall live
-            MakeWallLiveWall(e.Value);
+            if (rewalling_enabled)
+            {
+                // make wall live
+                MakeWallLiveWall(e.Value);
+            }
+            else e.Value.SetColorTouched();
+
         }
         else
         {
@@ -184,12 +244,12 @@ public class MatchManager : MonoBehaviour
 
 
         // do rewall after all else
-        if (rewalled)
+        if (rewalled && rewalling_enabled)
             OnRewall();
     }
     private void OnGameBallDeath(object sender, EventArgs e)
     {
-        if (point_over) return;
+        if (point_over || !scoring_enabled) return;
         OnPoint();
     }
     private void OnRacquetStunned(object sender, EventArgs<float> e)
@@ -218,7 +278,8 @@ public class MatchManager : MonoBehaviour
         }
 
         // gameball lifetime 
-        gameball.StartShrinking();
+        if (scoring_enabled)
+            gameball.StartShrinking();
 
         // audio
         if (last_possession != 0)
@@ -232,7 +293,7 @@ public class MatchManager : MonoBehaviour
         if (possession == 1) rewalls_p1 += 1;
         else rewalls_p2 += 1;
 
-        OnPoint();
+        if (scoring_enabled) OnPoint();
     }
     private void MakeWallLiveWall(Wall wall)
     {
@@ -259,7 +320,6 @@ public class MatchManager : MonoBehaviour
 
         // visual
         cam_shake.Shake(new CamShakeInstance(0.8f, 1f));
-        gameball.Hide();
 
         // audio
         match_audio.PlayPoint();
@@ -288,7 +348,13 @@ public class MatchManager : MonoBehaviour
         // score text
         ui.UpdateScoreUI(score_p1, score_p2);
 
-        StartCoroutine("BeginNextPoint");
+        // balls
+        if (interpoint_wait_enabled)
+        {
+            gameball.Hide();
+            StartCoroutine("BeginNextPointAfterDelay");
+        }
+        else BeginNextPoint();
     }
     private void OnGameOver()
     {
@@ -338,29 +404,19 @@ public class MatchManager : MonoBehaviour
             gameball.LastWall().FadeColortoNeutral();
         }
     }
-
-    private void BeginMatch()
+    private void ResetStats()
     {
-        point_over = true;
-        game_over = false;
-
-        // match clock
-        match_length_seconds = (GameSettings.Instance.match_type == 0 ? 5 :
-                                GameSettings.Instance.match_type == 1 ? 10 : 1) * 60;
-        match_seconds_left = match_length_seconds;
-
-        // inter point clock
-        seconds_to_next_point = seconds_to_first_point;
-
-        // gameball
-        gameball.Hide();
-
-        StartCoroutine("BeginNextPoint");
+        score_p1 = 0;
+        score_p2 = 0;
+        rewalls_p1 = 0;
+        rewalls_p2 = 0;
+        time_stunned_p1 = 0;
+        time_stunned_p2 = 0;
+        possession_time_p1 = 0;
+        possession_time_p2 = 0;
     }
-    private IEnumerator BeginNextPoint()
+    private void BeginNextPoint()
     {
-        yield return new WaitForSeconds(seconds_to_next_point);
-
         point_over = false;
 
         // reset possession
@@ -379,6 +435,13 @@ public class MatchManager : MonoBehaviour
         // prepare racquets
         racquet1.Reset();
         racquet2.Reset();
+    }
+
+    private IEnumerator BeginNextPointAfterDelay()
+    {
+        yield return new WaitForSeconds(seconds_to_next_point);
+
+        BeginNextPoint();
     }
     private IEnumerator ResetWallsAfterDelay()
     {
@@ -449,5 +512,9 @@ public class MatchManager : MonoBehaviour
     public bool PointOver()
     {
         return point_over;
+    }
+    public bool MatchClockEnabled()
+    {
+        return match_clock_enabled;
     }
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class ContollerInstantiator : MonoBehaviour 
 {
     public Racquet racquet;
-    public MatchManager match;
+    private MatchManager match;
 
     public void Awake()
     {
@@ -18,6 +18,12 @@ public class ContollerInstantiator : MonoBehaviour
             PlayerController c = gameObject.AddComponent<PlayerController>();
             c.Instantiate(racquet);
         }
+    }
+
+    public void Start()
+    {
+        match = Object.FindObjectOfType<MatchManager>();
+        if (match == null) Debug.LogError("MatchManager missing.");
     }
 
 }

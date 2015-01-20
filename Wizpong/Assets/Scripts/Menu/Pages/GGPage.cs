@@ -4,10 +4,17 @@ using UnityEngine.UI;
 
 public class GGPage : InGameMenuPage
 {
-    public MatchManager match;
+    private MatchManager match;
     public Text heading;
 
 
+    new public void Start()
+    {
+        match = Object.FindObjectOfType<MatchManager>();
+        if (match == null) Debug.LogError("MatchManager missing.");
+
+        base.Start();
+    }
     public void OnEnable()
     {
         UIAudio.Instance.PlayPause();

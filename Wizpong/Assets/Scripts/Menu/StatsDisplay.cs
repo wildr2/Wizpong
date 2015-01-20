@@ -6,9 +6,14 @@ public class StatsDisplay : MonoBehaviour
 {
     public Text player1_heading, player2_heading; 
     public ComparisonBar points_bar, possession_bar, stun_bar, rewalls_bar;
-    public MatchManager match;
+    private MatchManager match;
 
 
+    public void Start()
+    {
+        match = Object.FindObjectOfType<MatchManager>();
+        if (match == null) Debug.LogError("MatchManager missing.");
+    }
     public void OnEnable()
     {
         UpdateDisplay();

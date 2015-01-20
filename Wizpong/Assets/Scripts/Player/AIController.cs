@@ -4,11 +4,14 @@ using System.Collections;
 public class AIController : MonoBehaviour 
 {
     public Racquet racquet;
-    public MatchManager match;
+    private MatchManager match;
 
 
     public void Start()
     {
+        match = Object.FindObjectOfType<MatchManager>();
+        if (match == null) Debug.LogError("MatchManager missing.");
+
         StartCoroutine("UpdateInput");
         racquet.event_collide_ball += new System.EventHandler<EventArgs<Ball>>(OnRacquetVsBallCollision);
     }

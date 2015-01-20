@@ -106,7 +106,7 @@ public class Gameball : Ball
         ball_renderer.enabled = true;
         SetTrailEnabled(false);
         SetTrailColor(Color.white);
-        StartCoroutine("ReenableParticles");
+        StartCoroutine("ReenableParticles"); // turn particles back on next frame after the ball has been positioned
 
         // movement and position
         rigidbody2D.isKinematic = false;
@@ -149,7 +149,7 @@ public class Gameball : Ball
     private IEnumerator ReenableParticles()
     {
         yield return null;
-        particle_sys.enableEmission = true;
+        SetTrailEnabled(true);
     }
     private void ResetLifeTime()
     {
