@@ -8,6 +8,13 @@ public class SettingsPage : UIMenuPage
     public Slider music_volume_slider;
 
 
+    new public void Start()
+    {
+        sounds_volume_slider.value = GameSettings.Instance.volume_fx;
+        music_volume_slider.value = GameSettings.Instance.volume_music;
+
+        base.Start();
+    }
 	public void SliderChangeSoundsVolume()
     {
         GameSettings.Instance.volume_fx = sounds_volume_slider.value;
