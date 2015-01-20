@@ -9,7 +9,7 @@ public class StatsDisplay : MonoBehaviour
     private MatchManager match;
 
 
-    public void Start()
+    public void Awake()
     {
         match = Object.FindObjectOfType<MatchManager>();
         if (match == null) Debug.LogError("MatchManager missing.");
